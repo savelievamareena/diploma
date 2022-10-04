@@ -1,0 +1,20 @@
+.homepage--wrapper {}
+
+.homepageMain--header {
+    background: url("../images/largeHeader.jpg");
+    height: 500px;
+    width: 100%;
+}
+
+.homepageMain--headerText {
+    width: 700px;
+    padding-left: 80px;
+    padding-top: 80px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: left;
+    font-size: 22px;
+}
+
+.homepageMain--headerText h1 {
+    font-family: 'Yeseva One', cursive;
+}

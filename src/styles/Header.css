@@ -1,0 +1,36 @@
+.header--wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 14px 40px;
+    box-shadow: 0 0 0 2px rgb(255, 255, 255), 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+
+.header--menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+    justify-content: center;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.header--logo {
+    height: 50px;
+    width: 50px;
+}
+
+.header--search-icon {
+    height: 30px;
+    width: 30px;
+}
+
+.header--icons-corner {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+}
