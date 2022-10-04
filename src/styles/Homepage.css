@@ -15,6 +15,38 @@
     font-size: 22px;
 }
 
-.homepageMain--headerText h1 {
+h1 {
     font-family: 'Yeseva One', cursive;
+}
+
+.aboutUs--wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px 100px;
+    gap: 100px;
+}
+
+.aboutUs--image {
+    border-radius: 10px;
+    border: 4px solid #ACB0D3;
+    height: 400px;
+    width: 500px;
+    position: relative;
+    z-index: 9;
+}
+
+.aboutUs--image img {
+    position: absolute;
+    top: 15px;
+    left: -15px;
+    height: 400px;
+    width: 500px;
+}
+
+.aboutUs--text {
+    text-align: left;
+    width: 600px;
 }
