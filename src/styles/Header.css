@@ -18,6 +18,39 @@
     flex-wrap: wrap;
 }
 
+.header--menu li {
+    position: relative;
+}
+
+.header--dropdownToggle {
+    text-decoration: none;
+}
+
+.header--dropdownToggle:hover {
+    color: #ACB0D3;
+}
+
+.header--dropdownToggle {
+    color: black;
+}
+
+.header--dropdownMenu {
+    display: none;
+    gap: 10px;
+    flex-direction: column;
+    padding: 10px;
+    position: absolute;
+    top: 20px;
+    list-style-type: none;
+    left: -10px;
+    min-width: 256px;
+    text-align: left;
+    background-color: #fff;
+    overflow: hidden;
+    z-index: 9;
+    box-shadow: 0 0 0 2px rgb(255, 255, 255), 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+
 .header--logo {
     height: 50px;
     width: 50px;
