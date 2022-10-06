@@ -25,7 +25,7 @@ h1 {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 20px 100px;
+    padding: 20px 100px 50px;
     gap: 100px;
 }
 
@@ -49,4 +49,39 @@ h1 {
 .aboutUs--text {
     text-align: left;
     width: 600px;
+}
+
+.homepageMain--reviews {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    background-color: #DBE8EE;
+}
+
+.reviews--leftArrow {
+    transform: rotate(180deg);
+}
+
+.reviews--rightArrow {
+    padding-bottom: 10px;
+}
+
+.reviews--arrow {
+    cursor: pointer;
+    font-size: 40px;
+}
+
+.reviews--main {
+    width: 500px;
+    padding: 20px 50px;
+}
+
+.reviews--sender {
+    text-align: right;
+    font-weight: bold;
+    padding-top: 50px;
+
 }
