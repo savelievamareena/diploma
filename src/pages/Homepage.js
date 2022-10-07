@@ -5,10 +5,10 @@ import AboutUs from "../components/homePage/AboutUs";
 import Reviews from "../components/homePage/Reviews";
 import Offers from "../components/homePage/Offers";
 
-export default function Homepage() {
+export default function Homepage(props) {
     return(
         <div className="homepage--wrapper">
-            <Header />
+            <Header isAuthenticated = {props.isAuthenticated} />
             <WelcomeBlock />
             <AboutUs />
             <Reviews />

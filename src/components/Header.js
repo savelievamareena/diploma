@@ -5,7 +5,7 @@ import searchIcon from "../images/search-icon.png"
 import {Link} from "react-router-dom";
 
 
-export default function Header() {
+export default function Header(props) {
     function showDropdownMenu(event) {
         event.currentTarget.nextElementSibling.style.display = 'flex';
     }
@@ -82,7 +82,7 @@ export default function Header() {
                     <li>КОНТАКТЫ</li>
                 </ul>
                 <div className="header--cabinet">
-                    <Link to="/account">Личный кабинет</Link>
+                    <Link to="/account">{props.isAuthenticated ? "Личный кабинет" : "Вход/Регистрация"}</Link>
                 </div>
             </div>
         </div>
