@@ -82,7 +82,7 @@ export default function Header(props) {
                     <li>КОНТАКТЫ</li>
                 </ul>
                 <div className="header--cabinet">
-                    <Link to="/account">{props.isAuthenticated ? "Личный кабинет" : "Вход/Регистрация"}</Link>
+                    <Link to={props.isAuthenticated ? "/account" : "/login"}>{props.isAuthenticated ? "Личный кабинет" : "Вход/Регистрация"}</Link>
                 </div>
             </div>
         </div>

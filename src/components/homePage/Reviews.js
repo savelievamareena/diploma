@@ -6,13 +6,13 @@ export default function Reviews() {
     const [reviews, setReviews] = React.useState(reviewsData.reviews);
     const [reviewShown, setReviewShown] = React.useState(reviews[0]);
 
-    fetch("http://localhost:8080/api/reviews")
-        .then(result => result.json())
-        .then(
-            (data) => {setReviews(data)}
-        )
-
-    console.log(reviews);
+    // fetch("http://localhost:8080/api/reviews")
+    //     .then(result => result.json())
+    //     .then(
+    //         (data) => {setReviews(data)}
+    //     )
+    //
+    // console.log(reviews);
 
     function handleLeft() {
         setReviewShown(prevReviewShown => {
