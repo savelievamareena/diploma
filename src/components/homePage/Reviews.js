@@ -37,20 +37,23 @@ export default function Reviews() {
     }
 
     return(
-        <div className="homepageMain--reviews">
-            <div className="reviews--leftArrow reviews--arrow" onClick={handleLeft}>
-                &#10140;
-            </div>
-            <div className="reviews--main">
-                <div className="reviews--text">
-                    {reviewShown.text}
+        <div className="homepageMain--reviews homepage--block">
+            <h1 className="reviews--header">Отзывы</h1>
+            <div className="reviews--wrapper">
+                <div className="reviews--leftArrow reviews--arrow" onClick={handleLeft}>
+                    &#10140;
                 </div>
-                <div className="reviews--sender">
-                    {reviewShown.author}
+                <div className="reviews--main">
+                    <div className="reviews--text">
+                        {reviewShown.text}
+                    </div>
+                    <div className="reviews--sender">
+                        {reviewShown.author}
+                    </div>
                 </div>
-            </div>
-            <div className="reviews--rightArrow reviews--arrow" onClick={handleRight}>
-                &#10140;
+                <div className="reviews--rightArrow reviews--arrow" onClick={handleRight}>
+                    &#10140;
+                </div>
             </div>
         </div>
     )

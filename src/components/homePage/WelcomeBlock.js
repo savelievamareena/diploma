@@ -3,7 +3,7 @@ import '../../styles/Homepage.css';
 
 export default function WelcomeBlock() {
     return(
-        <div className="homepageMain--header">
+        <div className="homepageMain--header homepage--block">
             <div className="homepageMain--headerText">
                 <h1>Мы рады, что вы выбрали наш центр.</h1>
                 <p>«Клиника Реакт» – многопрофильная медицинская компания, крупнейшая в частной медицине Республики Беларусь.

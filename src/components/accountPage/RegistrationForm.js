@@ -5,6 +5,7 @@ import Header from "../Header";
 export default function RegistrationForm(props) {
     const [firstName, setFirstName] = React.useState();
     const [lastName, setLastName] = React.useState();
+    const [phoneNumber, setPhoneNumber] = React.useState();
     const [email, setEmail] = React.useState();
     const [password,setPassword] = React.useState();
     const [confirmPassword,setConfirmPassword] = React.useState();
@@ -16,6 +17,9 @@ export default function RegistrationForm(props) {
         }
         if(name === "lastName"){
             setLastName(value);
+        }
+        if(name === "phoneNumber") {
+            setPhoneNumber(value)
         }
         if(name === "email"){
             setEmail(value);
@@ -30,16 +34,20 @@ export default function RegistrationForm(props) {
 
     return(
         <div>
-            <Header isAuthenticated />
+            <Header isAuthenticated = {props.isAuthenticated} />
             <div className="form">
                 <div className="form-body">
-                    <div className="username form--row">
+                    <div className="firstName form--row">
                         <label className="form__label" htmlFor="firstName">First Name </label>
                         <input className="form__input" type="text" placeholder="First Name" value={firstName} />
                     </div>
                     <div className="lastname form--row">
                         <label className="form__label" htmlFor="lastName">Last Name </label>
                         <input type="text" name="" className="form__input" placeholder="LastName" value={lastName}/>
+                    </div>
+                    <div className="phoneNumber form--row">
+                        <label className="form__label" htmlFor="phoneNumber">Phone Number </label>
+                        <input type="text" name="" className="form__input" placeholder="Phone Number" value={phoneNumber}/>
                     </div>
                     <div className="email form--row">
                         <label className="form__label" htmlFor="email">Email </label>

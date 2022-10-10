@@ -69,5 +69,11 @@
     display: flex;
     gap: 10px;
     align-items: center;
+}
 
+.header--contacts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
 }

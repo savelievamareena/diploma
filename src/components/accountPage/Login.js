@@ -2,11 +2,11 @@ import React from "react";
 import '../../styles/AccountForms.css';
 import Header from "../Header";
 
-export default function Login() {
+export default function Login(props) {
 
     return(
         <div>
-            <Header />
+            <Header isAuthenticated = {props.isAuthenticated}/>
             <div className="login--formWrapper">
                 <div className="form">
                     <div className="form-body">

@@ -4,7 +4,7 @@ import aboutUs from "../../images/aboutus.jpg"
 
 export default function AboutUs() {
     return(
-        <div className="homepageMain--aboutUs">
+        <div className="homepageMain--aboutUs homepage--block">
             <h1>О нас</h1>
             <div className="aboutUs--wrapper">
                 <div className="aboutUs--image">

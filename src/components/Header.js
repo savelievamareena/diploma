@@ -29,6 +29,11 @@ export default function Header(props) {
                     <Link to="/"><img src={logo} alt="" className="header--logo" /></Link>
                     <img src={searchIcon} alt="" className="header--search-icon"/>
                 </div>
+                <div className="header--contacts">
+                    <div><strong>Как с нами связаться:</strong></div>
+                    <div>+37529 1010101, +37529 2020202</div>
+                    <div>bestclinique@gmai.com</div>
+                </div>
                 <ul className="header--menu">
                     <li>
                         <a href="" className="header--dropdownToggle"
