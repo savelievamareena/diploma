@@ -28,7 +28,7 @@ export default function App() {
                     <Route path="account" element={<Account isAuthenticated={isAuthenticated} />} />
                     <Route path="register" element={<RegistrationForm isAuthenticated={isAuthenticated} />} />
                     <Route path="login" element={<Login isAuthenticated={isAuthenticated} />} />
-                    <Route path="logout" element={<Logout/> } />
+                    {/*<Route path="logout" element={<Logout/> } />*/}
                 </Routes>
             </BrowserRouter>
         </div>

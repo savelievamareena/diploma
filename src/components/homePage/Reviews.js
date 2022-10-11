@@ -6,13 +6,14 @@ export default function Reviews() {
     const [reviews, setReviews] = React.useState(reviewsData.reviews);
     const [reviewShown, setReviewShown] = React.useState(reviews[0]);
 
-    // fetch("http://localhost:8080/api/reviews")
-    //     .then(result => result.json())
-    //     .then(
-    //         (data) => {setReviews(data)}
-    //     )
-    //
-    // console.log(reviews);
+    React.useEffect(() => {
+        const fetchData = async () => {
+            const result = await fetch('http://localhost:8080/api/reviews')
+            return result.json();
+        }
+        fetchData()
+            .then(data => {setReviews(prevReviews => [...prevReviews, ...data]);});
+    }, [])
 
     function handleLeft() {
         setReviewShown(prevReviewShown => {
@@ -45,10 +46,10 @@ export default function Reviews() {
                 </div>
                 <div className="reviews--main">
                     <div className="reviews--text">
-                        {reviewShown.text}
+                        {reviewShown.reviewText}
                     </div>
                     <div className="reviews--sender">
-                        {reviewShown.author}
+                        {reviewShown.sender}
                     </div>
                 </div>
                 <div className="reviews--rightArrow reviews--arrow" onClick={handleRight}>
