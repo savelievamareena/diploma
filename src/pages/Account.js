@@ -1,12 +1,16 @@
 import React from "react"
 import Header from "../components/Header"
-import RegistrationForm from "../components/accountPage/RegistrationForm";
+import {useCookies} from "react-cookie";
 
 export default function Account(props) {
+    const [cookies, setCookie, removeCookie] = useCookies();
+
     return(
         <div>
-            <Header isAuthenticated = {props.isAuthenticated} />
-            <RegistrationForm />
+            <Header />
+            <div>
+                ACCOUNT PAGE
+            </div>
         </div>
     )
 }

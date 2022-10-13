@@ -6,10 +6,10 @@ import Reviews from "../components/homePage/Reviews";
 import Offers from "../components/homePage/Offers";
 import Footer from "../components/homePage/Footer";
 
-export default function Homepage(props) {
+export default function Homepage() {
     return(
         <div className="homepage--wrapper">
-            <Header isAuthenticated = {props.isAuthenticated} />
+            <Header />
             <WelcomeBlock />
             <AboutUs />
             <Reviews />

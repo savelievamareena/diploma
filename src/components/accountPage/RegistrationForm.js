@@ -2,7 +2,7 @@ import React from "react";
 import '../../styles/AccountForms.css';
 import Header from "../Header";
 
-export default function RegistrationForm(props) {
+export default function RegistrationForm() {
     const [firstName, setFirstName] = React.useState();
     const [lastName, setLastName] = React.useState();
     const [phoneNumber, setPhoneNumber] = React.useState();
@@ -34,7 +34,7 @@ export default function RegistrationForm(props) {
 
     return(
         <div>
-            <Header isAuthenticated = {props.isAuthenticated} />
+            <Header />
             <div className="form">
                 <div className="form-body">
                     <div className="firstName form--row">

@@ -3,9 +3,12 @@ import '../styles/Header.css';
 import logo from "../images/logo.png"
 import searchIcon from "../images/search-icon.png"
 import {Link} from "react-router-dom";
+import {useCookies} from "react-cookie";
 
 
-export default function Header(props) {
+export default function Header() {
+    const [cookies, setCookie, removeCookie] = useCookies();
+
     function showDropdownMenu(event) {
         event.currentTarget.nextElementSibling.style.display = 'flex';
     }
@@ -87,7 +90,7 @@ export default function Header(props) {
                     <li>КОНТАКТЫ</li>
                 </ul>
                 <div className="header--cabinet">
-                    <Link to={props.isAuthenticated ? "/account" : "/login"}>{props.isAuthenticated ? "Личный кабинет" : "Вход/Регистрация"}</Link>
+                    <Link to={cookies.authKey != null ? "/account" : "/login"}>{cookies.authKey != null ? "Личный кабинет" : "Вход/Регистрация"}</Link>
                 </div>
             </div>
         </div>
