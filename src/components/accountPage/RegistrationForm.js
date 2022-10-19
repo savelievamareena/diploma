@@ -1,71 +1,135 @@
 import React from "react";
-import '../../styles/AccountForms.css';
+import '../../styles/AuthForms.css';
 import Header from "../Header";
+import {useNavigate} from "react-router";
+import {useCookies} from "react-cookie";
 
 export default function RegistrationForm() {
-    const [firstName, setFirstName] = React.useState();
-    const [lastName, setLastName] = React.useState();
-    const [phoneNumber, setPhoneNumber] = React.useState();
-    const [email, setEmail] = React.useState();
-    const [password,setPassword] = React.useState();
-    const [confirmPassword,setConfirmPassword] = React.useState();
+    const navigate = useNavigate();
 
-    const handleInputChange = (e) => {
-        const {name, value} = e.target;
-        if(name === "firstName"){
-            setFirstName(value);
+    const [cookies, setCookie, removeCookie] = useCookies();
+    const [errorMessage, setErrorMessage] = React.useState("");
+    const [formData, setFormData] = React.useState(
+        {
+            firstName: "",
+            lastName: "",
+            phoneNumber: "",
+            email: "",
+            password: "",
+            confirmPassword: ""
         }
-        if(name === "lastName"){
-            setLastName(value);
-        }
-        if(name === "phoneNumber") {
-            setPhoneNumber(value)
-        }
-        if(name === "email"){
-            setEmail(value);
-        }
-        if(name === "password"){
-            setPassword(value);
-        }
-        if(name === "confirmPassword"){
-            setConfirmPassword(value);
+    );
+
+    function handleChange(event) {
+        const {name, value} = event.target;
+        setFormData(prevFormData => {
+            return {
+                ...prevFormData,
+                [name]: value
+            }
+        })
+    }
+
+    async function handleSubmit(event) {
+        event.preventDefault();
+
+        const res = await fetch("http://localhost:8080/api/auth/register", {
+            method: "POST",
+            body: JSON.stringify(formData),
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include'
+        });
+        const resJson = await res.json();
+        if (res.status !== 200) {
+            setErrorMessage("Error");
+        } else {
+            if(!resJson.message) {
+                console.log(resJson.cookie)
+                console.log(cookies.authKey)
+                navigate('/account');
+            }else {
+                setErrorMessage(resJson.message);
+            }
         }
     }
 
     return(
         <div>
             <Header />
-            <div className="form">
+            <form className="form" onSubmit={handleSubmit}>
                 <div className="form-body">
                     <div className="firstName form--row">
-                        <label className="form__label" htmlFor="firstName">First Name </label>
-                        <input className="form__input" type="text" placeholder="First Name" value={firstName} />
+                        <label className="form__label" htmlFor="firstName">First Name</label>
+                        <input className="form__input"
+                               name="firstName"
+                               type="text"
+                               placeholder="First Name"
+                               value={formData.firstName}
+                               required
+                               onChange={handleChange}
+                        />
                     </div>
                     <div className="lastname form--row">
-                        <label className="form__label" htmlFor="lastName">Last Name </label>
-                        <input type="text" name="" className="form__input" placeholder="LastName" value={lastName}/>
+                        <label className="form__label" htmlFor="lastName">Last Name</label>
+                        <input className="form__input"
+                               name="lastName"
+                               type="text"
+                               placeholder="Last Name"
+                               value={formData.lastName}
+                               required
+                               onChange={handleChange}
+                        />
                     </div>
                     <div className="phoneNumber form--row">
-                        <label className="form__label" htmlFor="phoneNumber">Phone Number </label>
-                        <input type="text" name="" className="form__input" placeholder="Phone Number" value={phoneNumber}/>
+                        <label className="form__label" htmlFor="phoneNumber">Phone Number</label>
+                        <input className="form__input"
+                               name="phoneNumber"
+                               type="text"
+                               placeholder="Phone Number"
+                               value={formData.phoneNumber}
+                               required
+                               onChange={handleChange}
+                        />
                     </div>
                     <div className="email form--row">
-                        <label className="form__label" htmlFor="email">Email </label>
-                        <input type="email" className="form__input" placeholder="Email" value={email}/>
+                        <label className="form__label" htmlFor="email">Email</label>
+                        <input className="form__input"
+                               name="email"
+                               type="email"
+                               placeholder="Email"
+                               value={formData.email}
+                               required
+                               onChange={handleChange}
+                        />
                     </div>
                     <div className="password form--row">
-                        <label className="form__label" htmlFor="password">Password </label>
-                        <input className="form__input" type="password" placeholder="Password" value={password}/>
+                        <label className="form__label" htmlFor="password">Password</label>
+                        <input className="form__input"
+                               name="password"
+                               type="password"
+                               placeholder="Password"
+                               value={formData.password}
+                               required
+                               onChange={handleChange}
+                        />
                     </div>
                     <div className="confirm-password form--row">
                         <label className="form__label" htmlFor="confirmPassword">Confirm Password </label>
-                        <input className="form__input" type="password" placeholder="Confirm Password" value={confirmPassword}/>
+                        <input className="form__input"
+                               name="confirmPassword"
+                               type="password"
+                               placeholder="Confirm Password"
+                               value={formData.confirmPassword}
+                               required
+                               onChange={handleChange}
+                        />
                     </div>
                 </div>
+                <div className="message">{errorMessage && <span>{errorMessage}</span>}</div>
                 <div className="form-footer">
                     <button type="submit" className="register-btn">Register</button>
                 </div>
-            </div>
+            </form>
             <div>
                 <a href="/login">У меня есть аккаунт</a>
             </div>

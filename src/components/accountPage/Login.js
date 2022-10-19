@@ -1,5 +1,5 @@
 import React from "react";
-import '../../styles/AccountForms.css';
+import '../../styles/AuthForms.css';
 import Header from "../Header";
 import {useNavigate} from "react-router";
 import {useCookies} from "react-cookie";
@@ -46,7 +46,11 @@ export default function Login() {
             setErrorMessage("Error");
         } else {
             if(!resJson.message) {
-                navigate('/account');
+                if(resJson.role === "user") {
+                    navigate('/account');
+                }else if(resJson.role === "admin") {
+                    navigate('/admin');
+                }
             }else {
                 setErrorMessage(resJson.message);
             }
@@ -66,7 +70,8 @@ export default function Login() {
                                 name="email"
                                 className="form__input"
                                 placeholder="Email"
-                                required onChange={handleChange}
+                                required
+                                onChange={handleChange}
                                 value={formData.email}
                             />
 
@@ -78,7 +83,8 @@ export default function Login() {
                                 name="password"
                                 className="form__input"
                                 placeholder="Password"
-                                required onChange={handleChange}
+                                required
+                                onChange={handleChange}
                                 value={formData.password}
                             />
 

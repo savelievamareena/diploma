@@ -4,9 +4,12 @@ import logo from "../images/logo.png"
 import searchIcon from "../images/search-icon.png"
 import {Link} from "react-router-dom";
 import {useCookies} from "react-cookie";
+import {useNavigate} from "react-router";
 
 
 export default function Header() {
+    const navigate = useNavigate();
+
     const [cookies, setCookie, removeCookie] = useCookies();
 
     function showDropdownMenu(event) {
@@ -23,6 +26,22 @@ export default function Header() {
 
     function hideDropdownMenuItem(event) {
         event.currentTarget.style.display = 'none';
+    }
+
+    async function handleLogout(event) {
+        event.preventDefault();
+
+        const res = await fetch("http://localhost:8080/api/auth/logout", {
+            method: "GET",
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include'
+        });
+        const resJson = await res.json();
+        if (res.status === 200) {
+            navigate('/');
+        } else {
+            console.log(resJson.message);
+        }
     }
 
     return(
@@ -90,7 +109,9 @@ export default function Header() {
                     <li>КОНТАКТЫ</li>
                 </ul>
                 <div className="header--cabinet">
-                    <Link to={cookies.authKey != null ? "/account" : "/login"}>{cookies.authKey != null ? "Личный кабинет" : "Вход/Регистрация"}</Link>
+                    <Link to={cookies.authKey != null ? (cookies.role === "admin" ? "/admin" : "/account") : "/login"}>{cookies.authKey != null ? "Личный кабинет" : "Вход/Регистрация"}</Link>
+                    <br/>
+                    {cookies.authKey != null && <button onClick={handleLogout}>Выйти</button>}
                 </div>
             </div>
         </div>

@@ -23,6 +23,10 @@ h1 {
     font-size: 22px;
 }
 
+.homepageMain--aboutUs h1 {
+    text-align: center;
+}
+
 .aboutUs--wrapper {
     display: flex;
     flex-direction: row;
@@ -103,4 +107,28 @@ h1 {
 
 .footer--wrapper {
     height: 200px;
+}
+
+.doctors--cards {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.doctorCard--wrapper {
+    height: 450px;
+    width: 300px;
+    text-align: left;
+    padding: 20px 50px;
+}
+
+.doctorCard--profilePic img {
+    height: 300px;
+    width: 300px;
+}
+
+.doctors--buttonWrapper {
+    text-align: center;
 }
