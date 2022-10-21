@@ -111,7 +111,7 @@ export default function Header() {
                 <div className="header--cabinet">
                     <Link to={cookies.authKey != null ? (cookies.role === "admin" ? "/admin" : "/account") : "/login"}>{cookies.authKey != null ? "Личный кабинет" : "Вход/Регистрация"}</Link>
                     <br/>
-                    {cookies.authKey != null && <button onClick={handleLogout}>Выйти</button>}
+                    {/*{cookies.authKey != null && <button onClick={handleLogout}>Выйти</button>}*/}
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import {AiFillFund, AiFillIdcard, AiFillCarryOut} from "react-icons/ai";
+import {AiFillFund, AiFillIdcard, AiFillCarryOut, AiFillSetting} from "react-icons/ai";
 
 export const SidebarDataAdmin = [
     {
@@ -17,4 +17,9 @@ export const SidebarDataAdmin = [
         icon: <AiFillCarryOut/>,
         link: "/admin/schedule"
     },
+    {
+        title: "My Profile",
+        icon: <AiFillSetting/>,
+        link: "/admin/profile"
+    }
 ]

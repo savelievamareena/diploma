@@ -91,13 +91,13 @@ export default function Login() {
                         </div>
                     </div>
                     <div className="message">{errorMessage && <span>{errorMessage}</span>}</div>
-                    <div className="form-footer">
+                    <div className="form-footer centered-link-wrapper">
                         <button type="submit" className="register-btn">Log In</button>
                     </div>
                 </form>
             </div>
-            <div>
-                <a href="/register">Создать аккаунт</a>
+            <div className="centered-link-wrapper">
+                <a href="/register" >Создать аккаунт</a>
             </div>
         </div>
     )

@@ -1,5 +1,11 @@
+.admin--wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 .sidebar {
-    height: 100vh;
+    height: 100%;
     background-color: #DBE8EE;
     width: 250px;
 }
@@ -23,7 +29,6 @@
 
 .sidebar--list {
     height: auto;
-    width: 100%;
     padding: 0;
     margin: 0;
 }
@@ -40,4 +45,31 @@
 
 #active {
     background-color: #c7e4ee;
+}
+
+.adminHeader--wrapper {
+    height: 70px;
+    width: 100%;
+    background-color: #DBE8EE;
+    text-align: right;
+}
+
+.admin--welcome {
+    margin: 10px 0 10px;
+}
+
+.account--content-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
+
+.adminHeader-menu {
+    padding-right: 20px;
+}
+
+.form--edit {
+    display: flex;
+    width: 500px;
+    flex-direction: column;
 }

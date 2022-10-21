@@ -1,24 +1,38 @@
-import React from "react";
-import '../../styles/AuthForms.css';
-import Header from "../Header";
-import {useNavigate} from "react-router";
+import React from "react"
 import {useCookies} from "react-cookie";
 
-export default function RegistrationForm() {
-    const navigate = useNavigate();
-
+export default function AdminInfoContent() {
     const [cookies, setCookie, removeCookie] = useCookies();
-    const [errorMessage, setErrorMessage] = React.useState("");
+    const userId = cookies.userId;
+
+    const [message, setMessage] = React.useState("");
     const [formData, setFormData] = React.useState(
         {
             firstName: "",
             lastName: "",
             phoneNumber: "",
-            email: "",
-            password: "",
-            confirmPassword: ""
+            email: ""
         }
     );
+
+    React.useEffect(() => {
+        const fetchData = async () => {
+            const result = await fetch("http://localhost:8080/api/users/" + userId)
+            return result.json();
+        }
+        fetchData()
+            .then(data => {
+                setFormData(prevFormData => {
+                    return {
+                        ...prevFormData,
+                        firstName: data.firstName,
+                        lastName: data.lastName,
+                        email: data.email,
+                        phoneNumber: data.phoneNumber
+                    }
+                })
+            });
+    }, [])
 
     function handleChange(event) {
         const {name, value} = event.target;
@@ -32,8 +46,8 @@ export default function RegistrationForm() {
 
     async function handleSubmit(event) {
         event.preventDefault();
-
-        const res = await fetch("http://localhost:8080/api/auth/register", {
+        setMessage("");
+        const res = await fetch("http://localhost:8080/api/users/" + userId, {
             method: "POST",
             body: JSON.stringify(formData),
             headers: { 'Content-Type': 'application/json' },
@@ -41,22 +55,19 @@ export default function RegistrationForm() {
         });
         const resJson = await res.json();
         if (res.status !== 200) {
-            setErrorMessage("Error");
+            setMessage("Error");
         } else {
-            if(!resJson.message) {
-                console.log(resJson.cookie)
-                console.log(cookies.authKey)
-                navigate('/account');
+            if(resJson.message) {
+                setMessage(resJson.message);
             }else {
-                setErrorMessage(resJson.message);
+                setMessage("Saved!");
             }
         }
     }
 
-    return(
-        <div>
-            <Header />
-            <form className="form" onSubmit={handleSubmit}>
+    return (
+        <div className="account--right-content-block">
+            <form className="form--edit" onSubmit={handleSubmit}>
                 <div className="form-body">
                     <div className="firstName form--row">
                         <label className="form__label" htmlFor="firstName">First Name</label>
@@ -102,37 +113,12 @@ export default function RegistrationForm() {
                                onChange={handleChange}
                         />
                     </div>
-                    <div className="password form--row">
-                        <label className="form__label" htmlFor="password">Password</label>
-                        <input className="form__input"
-                               name="password"
-                               type="password"
-                               placeholder="Password"
-                               value={formData.password}
-                               required
-                               onChange={handleChange}
-                        />
-                    </div>
-                    <div className="confirm-password form--row">
-                        <label className="form__label" htmlFor="confirmPassword">Confirm Password </label>
-                        <input className="form__input"
-                               name="confirmPassword"
-                               type="password"
-                               placeholder="Confirm Password"
-                               value={formData.confirmPassword}
-                               required
-                               onChange={handleChange}
-                        />
-                    </div>
                 </div>
-                <div className="message">{errorMessage && <span>{errorMessage}</span>}</div>
+                <div className="message">{message && <span>{message}</span>}</div>
                 <div className="form-footer centered-link-wrapper">
-                    <button type="submit" className="register-btn">Register</button>
+                    <button type="submit" className="register-btn">Update</button>
                 </div>
             </form>
-            <div className="centered-link-wrapper">
-                <a href="/login">У меня есть аккаунт</a>
-            </div>
         </div>
     )
 }

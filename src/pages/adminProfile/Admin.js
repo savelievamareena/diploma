@@ -1,12 +1,9 @@
 import React from "react"
-import Header from "../components/Header"
 import {useCookies} from "react-cookie";
 import {useNavigate} from "react-router";
-import Sidebar from "../components/accountPage/Sidebar";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Homepage from "./Homepage";
-import AdminDoctors from "../components/accountPage/AdminDoctors";
-import AdminSchedule from "../components/accountPage/AdminSchedule";
+import Sidebar from "../../components/accountPage/Sidebar";
+import AdminHeader from "../../components/accountPage/admin/AdminHeader";
+import AdminDoctorsContent from "../../components/accountPage/admin/AdminDoctorsContent";
 
 export default function Admin(props) {
     const navigate = useNavigate();
@@ -30,15 +27,11 @@ export default function Admin(props) {
 
     return(
         <div className="admin--wrapper">
-            {/*<Header />*/}
-            <Sidebar />
-            {/*<BrowserRouter>*/}
-            {/*    <Routes>*/}
-            {/*        <Route path="/admin" element={<Admin />} />*/}
-            {/*        <Route path="/admin/doctors" element={<AdminDoctors />} />*/}
-            {/*        <Route path="/admin/schedule" element={<AdminSchedule />} />*/}
-            {/*    </Routes>*/}
-            {/*</BrowserRouter>*/}
+            <AdminHeader/>
+            <div className="account--content-wrapper">
+                <Sidebar />
+                {/*<AdminDoctorsContent/>*/}
+            </div>
         </div>
     )
 }
