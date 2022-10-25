@@ -1,7 +1,7 @@
 import React from "react"
 import {useCookies} from "react-cookie";
 
-export default function AdminInfoContent() {
+export default function PersonalInfoManageContent() {
     const [cookies, setCookie, removeCookie] = useCookies();
     const userId = cookies.userId;
 

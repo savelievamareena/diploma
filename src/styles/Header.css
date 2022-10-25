@@ -85,6 +85,14 @@
     align-items: end;
 }
 
-.header--cabinet a {
+.header--wrapper a {
     text-decoration: none;
+}
+
+.header--dropdownMenu a {
+    color: black;
+}
+
+.header--dropdownMenu li {
+    padding: 5px;
 }

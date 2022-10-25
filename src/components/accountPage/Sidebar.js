@@ -1,9 +1,9 @@
 import React from "react";
 import '../../styles/Account.css';
-import {SidebarDataAdmin} from "../../dataSources/SidebarDataAdmin";
 
-export default function Sidebar() {
-    const sidebarItem = SidebarDataAdmin.map((val, key) => {
+export default function Sidebar(props) {
+    const sidebarData = props.sidebarData;
+    const sidebarItems = sidebarData.map((val, key) => {
         return (
             <li
                 key={key}
@@ -20,7 +20,7 @@ export default function Sidebar() {
     return(
         <div className="sidebar">
             <ul className="sidebar--list">
-                {sidebarItem}
+                {sidebarItems}
             </ul>
         </div>
     )

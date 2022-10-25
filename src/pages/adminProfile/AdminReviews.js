@@ -3,7 +3,7 @@ import Sidebar from "../../components/accountPage/Sidebar";
 import AdminHeader from "../../components/accountPage/admin/AdminHeader";
 import {SidebarDataAdmin} from "../../dataSources/SidebarDataAdmin";
 
-export default function AdminSchedule() {
+export default function AdminReviews() {
     return (
         <div className="admin--wrapper">
             <AdminHeader/>

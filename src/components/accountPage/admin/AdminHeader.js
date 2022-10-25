@@ -4,7 +4,13 @@ import {useCookies} from "react-cookie";
 
 export default function AdminHeader() {
     const navigate = useNavigate();
-    const [cookies, setCookie, removeCookie] = useCookies();
+    const [cookies] = useCookies();
+
+    React.useEffect(() => {
+        if (!cookies.authKey) {
+            navigate("/login");
+        }
+    }, [cookies])
 
     async function handleLogout(event) {
         event.preventDefault();
@@ -25,7 +31,7 @@ export default function AdminHeader() {
         <div className="adminHeader--wrapper">
             <div className="adminHeader-menu">
                 <div className="admin--welcome">
-                    Добро пожаловать, admin.
+                    Добро пожаловать, {cookies.role === "admin" ? "admin" : "уважаемый клиент"}.
                 </div>
                 <button onClick={handleLogout}>Выйти</button>
             </div>
