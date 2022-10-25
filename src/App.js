@@ -17,6 +17,7 @@ import History from "./pages/aboutUs/History";
 import Contacts from "./pages/aboutUs/Contacts";
 import Faq from "./pages/aboutUs/Faq";
 import Department from "./pages/Department"
+import ReviewsList from "./pages/ReviewsList";
 
 
 export default function App() {
@@ -25,24 +26,25 @@ export default function App() {
             <BrowserRouter>
                 <Routes>
                     <Route index element={<Homepage />} />
-                    <Route path="account" element={<Account />} />
-                    <Route path="admin" element={<Admin />} />
-                    <Route path="register" element={<RegistrationForm />} />
-                    <Route path="login" element={<Login />} />
+                    <Route path="/account" element={<Account />} />
+                    <Route path="/admin" element={<Admin />} />
+                    <Route path="/register" element={<RegistrationForm />} />
+                    <Route path="/login" element={<Login />} />
 
-                    <Route path="admin/doctors" element={<AdminDoctors />} />
-                    <Route path="admin/schedule" element={<AdminSchedule />} />
-                    <Route path="admin/callback" element={<AdminCallback />} />
-                    <Route path="admin/profile" element={<AdminInfo />} />
-                    <Route path="admin/reviews" element={<AdminReviews />} />
-                    <Route path="account/visits" element={<UserVisits />} />
+                    <Route path="/admin/doctors" element={<AdminDoctors />} />
+                    <Route path="/admin/schedule" element={<AdminSchedule />} />
+                    <Route path="/admin/callback" element={<AdminCallback />} />
+                    <Route path="/admin/profile" element={<AdminInfo />} />
+                    <Route path="/admin/reviews" element={<AdminReviews />} />
+                    <Route path="/account/visits" element={<UserVisits />} />
 
-                    <Route path="history" element={<History />} />
-                    <Route path="contacts" element={<Contacts />} />
-                    <Route path="faq" element={<Faq />} />
-                    <Route path="doctors" element={<DoctorsList />} />
+                    <Route path="/history" element={<History />} />
+                    <Route path="/contacts" element={<Contacts />} />
+                    <Route path="/faq" element={<Faq />} />
+                    <Route path="/doctors" element={<DoctorsList />} />
+                    <Route path="/reviews" element={<ReviewsList />} />
 
-                    <Route path="department/:id" component={<Department/>} />
+                    <Route path="/department/:id" component={<Department/>} />
                 </Routes>
             </BrowserRouter>
         </div>

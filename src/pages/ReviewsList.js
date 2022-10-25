@@ -1,11 +1,11 @@
 import React from "react"
 import Header from "../components/Header";
 
-export default function DoctorsList() {
+export default function ReviewsList() {
     return (
         <div>
             <Header/>
-            <div>doctors list</div>
+            <div>reviews list</div>
         </div>
     )
 }

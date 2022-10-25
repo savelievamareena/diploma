@@ -18,17 +18,13 @@ export default function Header() {
             return result.json();
         }
         fetchData()
-            .then(data => {setDepartments(prevDepartments => [...prevDepartments, ...data]);});
+            .then(data => {setDepartments(prevDepartments => [...data]);});
     }, [])
 
     const departmentLinks = departments.map((val, key) => {
-        console.log(val)
-        console.log(key)
-        const link = "department/" + val.id;
+        const link = "/department/" + val.id;
         return (
-            <a href={link} key={key}>
-                <li>{val.title}</li>
-            </a>
+            <a key={key} href={link} >{val.title}</a>
         )
     })
 
@@ -76,46 +72,43 @@ export default function Header() {
                     <div>+37529 1010101, +37529 2020202</div>
                     <div>bestclinique@gmai.com</div>
                 </div>
-                <ul className="header--menu">
-                    <li>
-                        <a href="contacts" className="header--dropdownToggle"
+                <div className="header--menu">
+                    <div className="header--dropdownToggle-container">
+                        <div className="header--dropdownToggle header--menu-item"
                            onMouseEnter={showDropdownMenu}
                            onMouseLeave={hideDropdownMenu}
                         >
                             О НАС
-                        </a>
-                        <ul className="header--dropdownMenu"
-                            onMouseEnter={showDropdownMenuItem}
-                            onMouseLeave={hideDropdownMenuItem}
+                        </div>
+                        <div className="header--dropdownMenu"
+                             onMouseEnter={showDropdownMenuItem}
+                             onMouseLeave={hideDropdownMenuItem}
                         >
-                            <a href="history"><li>История клиники</li></a>
-                            <a href="contacts"><li>Как нас найти/Контакты</li></a>
-                            <a href="faq"><li>Часто задаваемые вопросы</li></a>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="" className="header--dropdownToggle"
+                            <a href="/history">История клиники</a>
+                            <a href="/contacts">Как нас найти/Контакты</a>
+                            <a href="/faq">Часто задаваемые вопросы</a>
+                        </div>
+                    </div>
+                    <div className="header--dropdownToggle-container">
+                        <div className="header--dropdownToggle header--menu-item"
                            onMouseEnter={showDropdownMenu}
                            onMouseLeave={hideDropdownMenu}>
                             НАПРАВЛЕНИЯ
-                        </a>
-                        <ul className="header--dropdownMenu"
+                        </div>
+                        <div className="header--dropdownMenu"
                             onMouseEnter={showDropdownMenuItem}
                             onMouseLeave={hideDropdownMenuItem}
                         >
                             {departmentLinks}
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="" className="header--dropdownToggle"
-                           onMouseEnter={showDropdownMenu}
-                           onMouseLeave={hideDropdownMenu}>
-                            ВРАЧИ
-                        </a>
-
-                    </li>
-                    <li>ОТЗЫВЫ</li>
-                </ul>
+                        </div>
+                    </div>
+                    <a href="/doctors" className="header--menu-item">
+                        ВРАЧИ
+                    </a>
+                    <a href="/reviews" className="header--menu-item">
+                        ОТЗЫВЫ
+                    </a>
+                </div>
                 <div className="header--cabinet">
                     <Link to={cookies.authKey != null ? (cookies.role === "admin" ? "/admin" : "/account") : "/login"}>{cookies.authKey != null ? "Личный кабинет" : "Вход/Регистрация"}</Link>
                     <br/>
