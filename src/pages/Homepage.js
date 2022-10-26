@@ -6,6 +6,7 @@ import Reviews from "../components/homePage/Reviews";
 import Offers from "../components/homePage/Offers";
 import Footer from "../components/homePage/Footer";
 import Doctors from "../components/homePage/Doctors";
+import Map from "../components/homePage/Map";
 
 export default function Homepage() {
     return(
@@ -16,6 +17,7 @@ export default function Homepage() {
             <Reviews />
             <Doctors />
             <Offers />
+            <Map />
             <Footer />
         </div>
     )

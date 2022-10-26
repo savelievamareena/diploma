@@ -3,6 +3,7 @@
     margin: 0;
     display: inline-block;
     width: 100%;
+    text-align: center;
 }
 
 h1 {
@@ -102,7 +103,7 @@ h1 {
 }
 
 .homepageMain--offers {
-    height: 500px;
+    background-color: #ACB0D3;
 }
 
 .footer--wrapper {
@@ -118,17 +119,89 @@ h1 {
 }
 
 .doctorCard--wrapper {
-    height: 450px;
-    width: 300px;
     text-align: left;
-    padding: 20px 50px;
 }
 
 .doctorCard--profilePic img {
-    height: 300px;
-    width: 300px;
+    height: 250px;
+    width: 250px;
 }
 
 .doctors--buttonWrapper {
     text-align: center;
+}
+
+.offers--cards-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    font-size: 22px;
+    padding: 100px 400px;
+    gap: 50px;
+}
+
+.offers--homepage-card a {
+    text-decoration: none;
+    color: black;
+}
+
+.offers--homepage-card {
+    padding: 5px;
+    border: 2px solid white;
+    border-radius: 5px;
+}
+
+.mapouter {
+    position:relative;
+    text-align:right;
+    height:400px;
+    width:700px;
+}
+
+.gmap_canvas {
+    overflow:hidden;
+    background:none!important;
+    height:400px;
+    width:700px;
+}
+
+.map--wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-top: 30px;
+    align-items: center;
+}
+
+.map--text-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.map--text-line-wrapper {
+    display: flex;
+    flex-direction: row;
+    text-align: justify;
+    gap: 100px;
+    align-items: flex-start;
+    width: 400px;
+}
+
+.map--text-line-title {
+    width: 100px;
+    flex-grow: 1;
+    text-align: left;
+    font-weight: bold;
+}
+
+.map--text-line-right-column {
+    text-align: right;
+}
+
+.footer--wrapper {
+    height: 200px;
+    background-color: #DBE8EE;
 }

@@ -34,6 +34,7 @@ export default function Doctors() {
 
     return (
         <div className="doctors--wrapper homepage--block">
+            <h1>Врачи</h1>
             <div className="doctors--cards">
                 {doctorCards}
             </div>
