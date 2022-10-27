@@ -44,28 +44,27 @@ export default function Header() {
         event.currentTarget.style.display = 'none';
     }
 
-    async function handleLogout(event) {
-        event.preventDefault();
-
-        const res = await fetch("http://localhost:8080/api/auth/logout", {
-            method: "GET",
-            headers: { 'Content-Type': 'application/json' },
-            credentials: 'include'
-        });
-        const resJson = await res.json();
-        if (res.status === 200) {
-            navigate('/');
-        } else {
-            console.log(resJson.message);
-        }
-    }
+    // async function handleLogout(event) {
+    //     event.preventDefault();
+    //
+    //     const res = await fetch("http://localhost:8080/api/auth/logout", {
+    //         method: "GET",
+    //         headers: { 'Content-Type': 'application/json' },
+    //         credentials: 'include'
+    //     });
+    //     const resJson = await res.json();
+    //     if (res.status === 200) {
+    //         navigate('/');
+    //     } else {
+    //         console.log(resJson.message);
+    //     }
+    // }
 
     return(
         <div className="header--style">
             <div className="header--wrapper">
                 <div className="header--icons-corner">
                     <Link to="/"><img src={logo} alt="" className="header--logo" /></Link>
-                    {/*<img src={searchIcon} alt="" className="header--search-icon"/>*/}
                 </div>
                 <div className="header--contacts">
                     <div><strong>Как с нами связаться:</strong></div>
@@ -111,7 +110,6 @@ export default function Header() {
                 </div>
                 <div className="header--cabinet">
                     <Link to={cookies.authKey != null ? (cookies.role === "admin" ? "/admin" : "/account") : "/login"}>{cookies.authKey != null ? "Личный кабинет" : "Вход/Регистрация"}</Link>
-                    <br/>
                     {/*{cookies.authKey != null && <button onClick={handleLogout}>Выйти</button>}*/}
                 </div>
             </div>

@@ -13,12 +13,13 @@ h1 {
 .homepageMain--header {
     background: url("../images/largeHeader.jpg");
     width: 100%;
+    position: relative;
 }
 
 .homepageMain--headerText {
-    width: 700px;
+    width: 800px;
     padding-left: 80px;
-    padding-top: 80px;
+    padding-top: 50px;
     font-family: 'Montserrat', sans-serif;
     text-align: left;
     font-size: 22px;
@@ -204,4 +205,42 @@ h1 {
 .footer--wrapper {
     height: 200px;
     background-color: #DBE8EE;
+}
+
+.callback-button{
+    padding: 10px 4px;
+    width: 200px;
+    border-radius: 6px;
+    background-color: white;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.callback-request-form {
+    min-height: 400px;
+    min-width: 500px;
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 0 2px rgb(255, 255, 255), 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+    background-color: white;
+    border-radius: 6px;
+}
+
+.close--callback-form {
+    height: 20px;
+    text-align: right;
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #DBE8EE;
+}
+
+.callback-form-textarea {
+    resize: none;
+    width: 300px;
+    height: 50px;
 }

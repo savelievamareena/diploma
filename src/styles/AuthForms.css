@@ -50,6 +50,19 @@
     border: none;
 }
 
+.callback-submit-btn {
+    width: 150px;
+    height: 40px;
+    background-color: #ACB0D3;
+    font-size: 22px;
+    color: white;
+    font-family: 'Yeseva One', cursive;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+}
+
 .login--wrapper {
     display: flex;
     flex-direction: row;
@@ -75,6 +88,13 @@
     color: red;
     font-size: 16px;
     margin: 10px 0;
+    text-align: center;
+}
+
+.success-message {
+    color: seagreen;
+    font-size: 16px;
+    margin-bottom: 2px;
     text-align: center;
 }
 
