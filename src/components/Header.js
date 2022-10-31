@@ -7,9 +7,9 @@ import {useNavigate} from "react-router";
 
 
 export default function Header() {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
-    const [cookies, setCookie, removeCookie] = useCookies();
+    const [cookies] = useCookies();
     const [departments, setDepartments] = React.useState([])
 
     React.useEffect(() => {

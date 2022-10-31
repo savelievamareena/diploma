@@ -1,17 +1,21 @@
 import React from "react"
 import {useCookies} from "react-cookie";
+import DatePicker from "react-date-picker";
+import '../../styles/AuthForms.css';
 
 export default function PersonalInfoManageContent() {
-    const [cookies, setCookie, removeCookie] = useCookies();
+    const [cookies] = useCookies();
     const userId = cookies.userId;
 
     const [message, setMessage] = React.useState("");
+    const [date, setDate] = React.useState(new Date());
     const [formData, setFormData] = React.useState(
         {
             firstName: "",
             lastName: "",
             phoneNumber: "",
-            email: ""
+            email: "",
+            dateOfBirth: ""
         }
     );
 
@@ -22,6 +26,11 @@ export default function PersonalInfoManageContent() {
         }
         fetchData()
             .then(data => {
+                const dateReceived = data.dateOfBirth;
+                const dateFullString = dateReceived + "T12:00:00Z";
+                const dateObj = new Date(dateFullString);
+                setDate(dateObj)
+
                 setFormData(prevFormData => {
                     return {
                         ...prevFormData,
@@ -33,6 +42,17 @@ export default function PersonalInfoManageContent() {
                 })
             });
     }, [])
+
+    React.useEffect(() => {
+        const dateToSave = date.toJSON().slice(0, 10);
+
+        setFormData(prevFormData => {
+            return {
+                ...prevFormData,
+                dateOfBirth: dateToSave
+            }
+        })
+    }, [date])
 
     function handleChange(event) {
         const {name, value} = event.target;
@@ -46,6 +66,7 @@ export default function PersonalInfoManageContent() {
 
     async function handleSubmit(event) {
         event.preventDefault();
+
         setMessage("");
         const res = await fetch("http://localhost:8080/api/users/" + userId, {
             method: "POST",
@@ -89,6 +110,15 @@ export default function PersonalInfoManageContent() {
                                value={formData.lastName}
                                required
                                onChange={handleChange}
+                        />
+                    </div>
+                    <div className="datepicker form--row">
+                        <label className="form__label" htmlFor="dateOfBirth">День рождения</label>
+                        <DatePicker
+                            onChange={setDate}
+                            value={date}
+                            format="dd-MM-y"
+                            locale="hu-HU"
                         />
                     </div>
                     <div className="phoneNumber form--row">

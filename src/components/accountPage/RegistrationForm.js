@@ -3,11 +3,12 @@ import '../../styles/AuthForms.css';
 import Header from "../Header";
 import {useNavigate} from "react-router";
 import {useCookies} from "react-cookie";
+import DatePicker from 'react-date-picker';
 
 export default function RegistrationForm() {
     const navigate = useNavigate();
 
-    const [cookies, setCookie, removeCookie] = useCookies();
+    const [cookies] = useCookies();
     const [errorMessage, setErrorMessage] = React.useState("");
     const [formData, setFormData] = React.useState(
         {
@@ -16,9 +17,11 @@ export default function RegistrationForm() {
             phoneNumber: "",
             email: "",
             password: "",
-            confirmPassword: ""
+            confirmPassword: "",
+            dateOfBirth: ""
         }
     );
+    const [date, setDate] = React.useState(new Date());
 
     function handleChange(event) {
         const {name, value} = event.target;
@@ -29,6 +32,17 @@ export default function RegistrationForm() {
             }
         })
     }
+
+    React.useEffect(() => {
+        const dateToSave = date.toJSON().slice(0, 10);
+
+        setFormData(prevFormData => {
+            return {
+                ...prevFormData,
+                dateOfBirth: dateToSave
+            }
+        })
+    }, [date])
 
     async function handleSubmit(event) {
         event.preventDefault();
@@ -44,8 +58,6 @@ export default function RegistrationForm() {
             setErrorMessage("Error");
         } else {
             if(!resJson.message) {
-                console.log(resJson.cookie)
-                console.log(cookies.authKey)
                 navigate('/account');
             }else {
                 setErrorMessage(resJson.message);
@@ -78,6 +90,15 @@ export default function RegistrationForm() {
                                value={formData.lastName}
                                required
                                onChange={handleChange}
+                        />
+                    </div>
+                    <div className="datepicker form--row">
+                        <label className="form__label" htmlFor="dateOfBirth">День рождения</label>
+                        <DatePicker
+                            onChange={setDate}
+                            value={date}
+                            format="dd-MM-y"
+                            locale="hu-HU"
                         />
                     </div>
                     <div className="phoneNumber form--row">

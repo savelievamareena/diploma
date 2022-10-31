@@ -1,6 +1,6 @@
 .form{
     background-color: white;
-    width: 400px;
+    width: 450px;
     margin: 200px auto 20px;
     padding: 20px;
     border: 3px solid #ACB0D3;
@@ -100,4 +100,18 @@
 
 .centered-link-wrapper {
     text-align: center;
+}
+
+.react-date-picker .react-date-picker--closed .react-date-picker--enabled {
+    height: 28px;
+    width: 308px;
+}
+
+.react-date-picker__wrapper {
+    width: 250px;
+}
+
+
+.react-date-picker__button {
+    padding: 5px 5px;
 }
