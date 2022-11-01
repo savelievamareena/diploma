@@ -21,12 +21,14 @@ export default function Doctors() {
         return <DoctorCard
             key={i}
             experiense={doctor.yearsOfExperience}
-            specialization={doctor.specialization.title ? doctor.specialization.title : "nikakaya"}
+            specialization={doctor.specialization.title}
             fullName={doctor.firstName + " " + doctor.lastName}
             photo={doctor.profilePhotoLink}
             bio={doctor.bio}
         />
     })
+
+    doctorCards.slice(0, 5);
 
     function handleClick() {
         navigate('/doctors');

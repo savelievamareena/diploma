@@ -12,8 +12,8 @@ export default function DoctorCard(props) {
             </div>
             <h4>{props.fullName}</h4>
             <div>{props.bio}</div>
-            <div>Специализация: {props.specialization}</div>
-            <div>Стаж: {props.experiense} лет</div>
+            <div><strong>Специализация:</strong> {props.specialization}</div>
+            <div><strong>Стаж:</strong> {props.experiense} лет</div>
         </div>
     )
 }

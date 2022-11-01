@@ -3,7 +3,7 @@ import '../../styles/Homepage.css';
 import {FaRegWindowClose} from "react-icons/fa"
 
 export default function WelcomeBlock() {
-    const [isCallbackFormShown, setIsCallbackFirmShown] = React.useState(false);
+    const [isCallbackFormShown, setIsCallbackFormShown] = React.useState(false);
     const [errorMessage, setErrorMessage] = React.useState("");
     const [successMessage, setSuccessMessage] = React.useState("");
     const [formData, setFormData] = React.useState(
@@ -16,7 +16,7 @@ export default function WelcomeBlock() {
     );
 
     function clickHandler() {
-        setIsCallbackFirmShown(prevState => !prevState);
+        setIsCallbackFormShown(prevState => !prevState);
         setFormData({firstName: "", lastName: "", phoneNumber: "", question: ""})
         setSuccessMessage("");
         setErrorMessage("");
@@ -48,9 +48,8 @@ export default function WelcomeBlock() {
             if(!resJson.message) {
                 setSuccessMessage("Done!")
                 setTimeout(() => {
-                    setIsCallbackFirmShown(false)
+                    setIsCallbackFormShown(false)
                 }, 500);
-
             }else {
                 setErrorMessage(resJson.message);
             }

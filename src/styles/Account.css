@@ -97,5 +97,97 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+}
 
+.doctors-page-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+    padding: 50px;
+}
+
+.admin--doctors-wrapper {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: normal;
+    gap: 10px;
+    position: relative;
+}
+
+.admin--doctor-row {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #ACB0D3;
+    border-radius: 5px;
+    /*padding: 6px;*/
+}
+
+.doctor-row-cell1 {
+    width: 250px;
+}
+
+.doctor-row-cell2 {
+    width: 170px;
+}
+
+.doctor-row-cell3 {
+    width: 250px;
+}
+
+.doctor-row-cell4 {
+    width: 150px;
+}
+
+.doctor-row-cell5 {
+    width: 70px;
+}
+
+.doctor-row-cell6 {
+    width: 100px;
+}
+
+.doctor-row-cell7 {
+    width: 100px;
+}
+
+.doctor-row-cell8 {
+    width: 40px;
+}
+
+.doctor-row-cell9 {
+    width: 110px;
+}
+
+.doctor-admin-photoLink img {
+    height: 100px;
+    width: 100px;
+}
+
+.doctor-cell:nth-child(2n) {
+    background-color: #DBE8EE;
+}
+
+.doctor-cell {
+    padding: 6px;
+}
+
+.admin-doctor-button {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.edit-doctor-popup {
+    min-height: 400px;
+    min-width: 500px;
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 0 2px rgb(255, 255, 255), 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+    background-color: white;
+    border-radius: 6px;
 }

@@ -121,6 +121,7 @@ h1 {
 
 .doctorCard--wrapper {
     text-align: left;
+    width: 350px;
 }
 
 .doctorCard--profilePic img {
