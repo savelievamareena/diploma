@@ -5,25 +5,25 @@ import doctorCategories from "../../../dataSources/doctorCategories.json";
 
 export default function AdminDoctorsContent() {
     const [doctors, setDoctors] = React.useState([]);
-    const [specializations, setSpecializations] = React.useState({});
+    const [popupShown, setPopupShown] = React.useState(false);
+    const [specializations, setSpecializations] = React.useState([]);
     const [errorMessage, setErrorMessage] = React.useState("");
     const [successMessage, setSuccessMessage] = React.useState("");
     const [formData, setFormData] = React.useState({
-        id: "",
+        id: 0,
         specializationId: "",
         firstName: "",
         lastName: "",
         education: "",
         bio: "",
-        isAvailable: "",
+        available: true,
         fee: "",
         yearsOfExperience: "",
         profilePhotoLink: "",
-        category: ""
+        category: "отсутствует"
     });
 
-    const [popupShown, setPopupShown] = React.useState(false);
-
+    //fetch doctors
     React.useEffect(() => {
         const fetchData = async () => {
             const result = await fetch('http://localhost:8080/api/doctors')
@@ -33,6 +33,30 @@ export default function AdminDoctorsContent() {
             .then(data => {setDoctors([...data])});
     }, [successMessage])
 
+    //fetch specializations
+    React.useEffect(() => {
+        const fetchData = async () => {
+            const result = await fetch('http://localhost:8080/api/specializations')
+            return result.json();
+        }
+        fetchData()
+            .then(data => {setSpecializations([...data])});
+    }, [successMessage])
+
+    //selects prepare
+    const selectSpecOptions = specializations.map((val, key) => {
+        return(
+            <option key={key} value={val.id}>{val.title}</option>
+        )
+    })
+
+    const selectCategoryOptions = doctorCategories.map((val, key) => {
+        return(
+            <option key={key} value={val}>{val}</option>
+        )
+    })
+
+    //delete doctor functionality
     async function handleDelete(event) {
         const doctorId = event.currentTarget.parentNode.getAttribute("data-id");
 
@@ -47,26 +71,43 @@ export default function AdminDoctorsContent() {
         } else {
             if(resJson.message) {
                 setErrorMessage(resJson.message);
-                setTimeout(() => {
-                    setErrorMessage("")
-                }, 1000);
             }else {
                 setSuccessMessage("Done!")
-                setTimeout(() => {
-                    setSuccessMessage("")
-                }, 1000);
             }
         }
+        setTimeout(() => {
+            setErrorMessage("");
+            setSuccessMessage("");
+        }, 1000);
     }
 
+    //click edit button
     function handleEdit(event) {
         const doctorId = event.currentTarget.parentNode.getAttribute("data-id");
         const doctorToEdit = doctors.find(x => x.id == doctorId);
-        setFormData({...doctorToEdit});
+        setFormData({...doctorToEdit, specializationId: doctorToEdit.specialization.id});
+        setPopupShown(true);
+    }
+
+    function handleAddDoctor() {
+        setFormData({
+            id: "0",
+            specializationId: "",
+            firstName: "",
+            lastName: "",
+            education: "",
+            bio: "",
+            isAvailable: true,
+            fee: "",
+            yearsOfExperience: "",
+            profilePhotoLink: "",
+            category: "отсутствует"
+        })
+        setPopupShown(true);
     }
 
     function handleChange(event) {
-        const {name, value} = event.target;
+        const {name, value} = event.target
         setFormData(prevFormData => {
             return {
                 ...prevFormData,
@@ -75,20 +116,30 @@ export default function AdminDoctorsContent() {
         })
     }
 
+    function handleRadio(event) {
+        const isAvailable = event.currentTarget.value === "true";
+        setFormData(prevFormData => {
+            return {
+                ...prevFormData,
+                available: isAvailable
+            }
+        })
+    }
+
     function closeFormHandler() {
         setPopupShown(false);
         setFormData({
-            id: "",
+            id: "0",
             specializationId: "",
             firstName: "",
             lastName: "",
             education: "",
             bio: "",
-            isAvailable: "",
+            isAvailable: true,
             fee: "",
             yearsOfExperience: "",
             profilePhotoLink: "",
-            category: ""
+            category: "отсутствует"
         })
         setSuccessMessage("");
         setErrorMessage("");
@@ -96,26 +147,35 @@ export default function AdminDoctorsContent() {
 
     async function handleSubmit(event) {
         event.preventDefault();
+        if(formData.specializationId == 0) {
+            setErrorMessage("Выберите Специализацию")
+            setTimeout(() => {
+                setErrorMessage("")
+            }, 1000);
+            return
+        }
 
-        // const res = await fetch("http://localhost:8080/api/callback", {
-        //     method: "POST",
-        //     body: JSON.stringify(formData),
-        //     headers: { 'Content-Type': 'application/json' },
-        //     credentials: 'include'
-        // });
-        // const resJson = await res.json();
-        // if (res.status !== 200) {
-        //     setErrorMessage("Error");
-        // } else {
-        //     if(!resJson.message) {
-        //         setSuccessMessage("Done!")
-        //         setTimeout(() => {
-        //             setIsCallbackFormShown(false)
-        //         }, 500);
-        //     }else {
-        //         setErrorMessage(resJson.message);
-        //     }
-        // }
+        const res = await fetch("http://localhost:8080/api/doctors/" + formData.id, {
+            method: "POST",
+            body: JSON.stringify(formData),
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include'
+        });
+        const resJson = await res.json();
+        if (res.status !== 200) {
+            setErrorMessage("Error");
+        } else {
+            if(!resJson.message) {
+                setSuccessMessage("Done!")
+                setPopupShown(false)
+            }else {
+                setErrorMessage(resJson.message);
+            }
+        }
+        setTimeout(() => {
+            setErrorMessage("");
+            setSuccessMessage("");
+        }, 1000);
     }
 
     const doctorsForAdmin = doctors.map((val, key) => {
@@ -141,61 +201,146 @@ export default function AdminDoctorsContent() {
 
     return (
         <div className="admin--doctors-wrapper">
+            <div>
+                <button type="button" onClick={handleAddDoctor}>
+                    Добавить доктора
+                </button>
+            </div>
             <div className="message">{errorMessage ? errorMessage : null}</div>
             <div className="success-message">{successMessage ? successMessage : null}</div>
             {doctorsForAdmin}
             <div className="edit-doctor-popup" style={{display: popupShown ? 'block' : 'none' }}>
-                <div className="close--callback-form" >
+                <div className="close--callback-form" onClick={closeFormHandler}>
                     <FaRegWindowClose/>
                 </div>
                 <form onSubmit={handleSubmit}>
                     <div className="form-body">
                         <div className="firstName form--row">
-                            <label className="form__label" htmlFor="firstName">First Name</label>
+                            <label className="form__label" htmlFor="firstName">Имя</label>
                             <input className="form__input"
                                    name="firstName"
                                    type="text"
-                                   placeholder="First Name"
+                                   placeholder="Имя"
                                    value={formData.firstName}
                                    required
                                    onChange={handleChange}
                             />
                         </div>
-                        {/*<div className="lastname form--row">*/}
-                        {/*    <label className="form__label" htmlFor="lastName">Last Name</label>*/}
-                        {/*    <input className="form__input"*/}
-                        {/*           name="lastName"*/}
-                        {/*           type="text"*/}
-                        {/*           placeholder="Last Name"*/}
-                        {/*           value={formData.lastName}*/}
-                        {/*           required*/}
-                        {/*           onChange={handleChange}*/}
-                        {/*    />*/}
-                        {/*</div>*/}
-                        {/*<div className="phoneNumber form--row">*/}
-                        {/*    <label className="form__label" htmlFor="phoneNumber">Phone Number</label>*/}
-                        {/*    <input className="form__input"*/}
-                        {/*           name="phoneNumber"*/}
-                        {/*           type="text"*/}
-                        {/*           placeholder="Phone Number"*/}
-                        {/*           value={formData.phoneNumber}*/}
-                        {/*           required*/}
-                        {/*           onChange={handleChange}*/}
-                        {/*    />*/}
-                        {/*</div>*/}
-                        {/*<div className="phoneNumber form--row">*/}
-                        {/*    <label className="form__label" htmlFor="phoneNumber">Phone Number</label>*/}
-                        {/*    <textarea className=" callback-form-textarea"*/}
-                        {/*              name="question"*/}
-                        {/*              type="text"*/}
-                        {/*              placeholder="Какой вопрос вас интересует?"*/}
-                        {/*              value={formData.question}*/}
-                        {/*              onChange={handleChange}*/}
-                        {/*    ></textarea>*/}
-                        {/*</div>*/}
+                        <div className="lastname form--row">
+                            <label className="form__label" htmlFor="lastName">Фамилия</label>
+                            <input className="form__input"
+                                   name="lastName"
+                                   type="text"
+                                   placeholder="Фамилия"
+                                   value={formData.lastName}
+                                   required
+                                   onChange={handleChange}
+                            />
+                        </div>
+                        <div className="lastname form--row">
+                            <label className="form__label" htmlFor="lastName">Специализация</label>
+                            <select
+                                className="form__input"
+                                value={formData.specializationId}
+                                onChange={handleChange}
+                                name="specializationId"
+                            >
+                                <option value="0">--Не выбрано--</option>
+                                {selectSpecOptions}
+                            </select>
+                        </div>
+
+                        <div className="education form--row">
+                            <label className="form__label" htmlFor="education">Образование</label>
+                            <input className="form__input"
+                                   name="education"
+                                   type="text"
+                                   placeholder="Образование"
+                                   value={formData.education}
+                                   required
+                                   onChange={handleChange}
+                            />
+                        </div>
+                        <div className="bio form--row">
+                            <label className="form__label" htmlFor="bio">Описание</label>
+                            <textarea className="callback-form-textarea"
+                                      name="bio"
+                                      placeholder="Описание"
+                                      value={formData.bio}
+                                      onChange={handleChange}
+                            ></textarea>
+                        </div>
+                        <div className="fee form--row">
+                            <label className="form__label" htmlFor="fee">Ставка</label>
+                            <input className="form__input"
+                                   name="fee"
+                                   type="number"
+                                   placeholder="Ставка"
+                                   value={formData.fee}
+                                   required
+                                   onChange={handleChange}
+                            />
+                        </div>
+                        <div className="yearsOfExperience form--row">
+                            <label className="form__label" htmlFor="yearsOfExperience">Опыт, лет</label>
+                            <input className="form__input"
+                                   name="yearsOfExperience"
+                                   type="number"
+                                   placeholder="Опыт"
+                                   value={formData.yearsOfExperience}
+                                   required
+                                   onChange={handleChange}
+                            />
+                        </div>
+                        <div className="category form--row">
+                            <label className="form__label" htmlFor="category">Категория</label>
+                            <select
+                                className="form__input"
+                                value={formData.category}
+                                onChange={handleChange}
+                                name="category"
+                                required
+                            >
+                                {selectCategoryOptions}
+                            </select>
+                        </div>
+                        <div className="profilePhotoLink form--row">
+                            <label className="form__label" htmlFor="yearsOfExperience">Ссылка на фото</label>
+                            <input className="form__input"
+                                   name="profilePhotoLink"
+                                   type="text"
+                                   placeholder="Ссылка на фото"
+                                   value={formData.profilePhotoLink}
+                                   onChange={handleChange}
+                            />
+                        </div>
+                        <div className="profilePhotoLink form--row">
+                            <div>Статус:</div>
+                            <div className="doctors-form-radio">
+                                <input
+                                    id="available"
+                                    type="radio"
+                                    name="available"
+                                    value="true"
+                                    checked={formData.available === true}
+                                    onChange={handleRadio}
+                                />
+                                <label htmlFor="available">Доступен</label>
+                                <br />
+
+                                <input
+                                    required
+                                    id="not-available"
+                                    type="radio"
+                                    name="available"
+                                    value="false"
+                                    checked={formData.available === false}
+                                    onChange={handleRadio}
+                                />
+                                <label htmlFor="available">Недоступен</label>
+                            </div>
+                        </div>
                     </div>
-                    <div className="message">{errorMessage && <span>{errorMessage}</span>}</div>
-                    <div className="success-message">{successMessage && <span>{successMessage}</span>}</div>
                     <div className="form-footer centered-link-wrapper">
                         <button type="submit" className="callback-submit-btn">Отправить</button>
                     </div>
@@ -203,5 +348,4 @@ export default function AdminDoctorsContent() {
             </div>
         </div>
     )
-
 }

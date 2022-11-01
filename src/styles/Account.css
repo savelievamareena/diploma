@@ -180,7 +180,7 @@
 }
 
 .edit-doctor-popup {
-    min-height: 400px;
+    height: 570px;
     min-width: 500px;
     display: none;
     position: absolute;
@@ -190,4 +190,8 @@
     box-shadow: 0 0 0 2px rgb(255, 255, 255), 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
     background-color: white;
     border-radius: 6px;
+}
+
+.doctors-form-radio {
+    margin-right: 150px;
 }
