@@ -126,6 +126,7 @@ h1 {
     align-items: center;
     justify-content: space-around;
     flex-wrap: wrap;
+    padding-bottom: 10px;
 }
 
 .doctorCard--wrapper {
@@ -134,8 +135,8 @@ h1 {
 }
 
 .doctorCard--profilePic img {
-    height: 250px;
-    width: 250px;
+    height: 220px;
+    width: 220px;
 }
 
 .doctors--buttonWrapper {

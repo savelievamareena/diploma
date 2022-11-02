@@ -1,23 +1,23 @@
 body {
-  margin: 0;
-  /*font-family: 'Montserrat', sans-serif;*/
-  /*font-family: 'Yeseva One', cursive;*/
-  font-family: 'Montserrat', 'Yeseva One', 'Segoe UI', 'Roboto', 'Oxygen', 'Droid Sans', 'Helvetica Neue',
+    margin: 0;
+    /*font-family: 'Montserrat', sans-serif;*/
+    /*font-family: 'Yeseva One', cursive;*/
+    font-family: 'Montserrat', 'Yeseva One', 'Segoe UI', 'Roboto', 'Oxygen', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  height: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height: 100%;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
 #root {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
 }
