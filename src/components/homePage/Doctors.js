@@ -3,19 +3,14 @@ import '../../styles/Homepage.css';
 import DoctorCard from "./DoctorCard";
 import {useNavigate} from "react-router";
 
-export default function Doctors() {
+export default function Doctors(props) {
     const navigate = useNavigate();
 
     const [doctors, setDoctors] = React.useState([])
 
     React.useEffect(() => {
-        const fetchData = async () => {
-            const result = await fetch('http://localhost:8080/api/doctors')
-            return result.json();
-        }
-        fetchData()
-            .then(data => {setDoctors([...data])});
-    }, [])
+        setDoctors([...props.doctors])
+    }, [props.doctors])
 
     const doctorCards = doctors.map((doctor, i) => {
         return <DoctorCard
@@ -24,11 +19,11 @@ export default function Doctors() {
             specialization={doctor.specialization.title}
             fullName={doctor.firstName + " " + doctor.lastName}
             photo={doctor.profilePhotoLink}
-            bio={doctor.bio}
+            bio={doctor.education}
         />
     })
 
-    doctorCards.slice(0, 5);
+    const doctorsToDisplay = doctorCards.slice(0, 4);
 
     function handleClick() {
         navigate('/doctors');
@@ -38,7 +33,7 @@ export default function Doctors() {
         <div className="doctors--wrapper homepage--block">
             <h1>Врачи</h1>
             <div className="doctors--cards">
-                {doctorCards}
+                {doctorsToDisplay}
             </div>
             <div className="doctors--buttonWrapper">
                 <button onClick={handleClick}>Show all doctors</button>

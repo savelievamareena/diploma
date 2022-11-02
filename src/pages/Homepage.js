@@ -9,13 +9,24 @@ import Doctors from "../components/homePage/Doctors";
 import Map from "../components/homePage/Map";
 
 export default function Homepage() {
+    const [doctors, setDoctors] = React.useState([])
+
+    React.useEffect(() => {
+        const fetchData = async () => {
+            const result = await fetch('http://localhost:8080/api/doctors')
+            return result.json();
+        }
+        fetchData()
+            .then(data => {setDoctors([...data])});
+    }, [])
+
     return(
         <div className="homepage--wrapper">
             <Header />
             <WelcomeBlock />
             <AboutUs />
-            <Reviews />
-            <Doctors />
+            <Reviews doctors={doctors} />
+            <Doctors doctors={doctors}/>
             <Offers />
             <Map />
             <Footer />

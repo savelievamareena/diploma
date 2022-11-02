@@ -67,12 +67,21 @@ h1 {
     flex-wrap: wrap;
     justify-content: center;
     align-items: baseline;
-    padding: 20px 100px 50px;
+    padding: 20px 100px 20px;
 }
 
 .homepageMain--reviews {
     background-color: #DBE8EE;
     text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+}
+
+.add-review-button {
+    margin-top: auto;
+    margin-bottom: 20px;
 }
 
 .reviews--leftArrow {
@@ -100,7 +109,7 @@ h1 {
 }
 
 .reviews--header {
-    padding-bottom: 50px;
+    padding-bottom: 10px;
 }
 
 .homepageMain--offers {
@@ -230,6 +239,7 @@ h1 {
     box-shadow: 0 0 0 2px rgb(255, 255, 255), 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
     background-color: white;
     border-radius: 6px;
+    z-index: 999;
 }
 
 .close--callback-form {
@@ -244,4 +254,10 @@ h1 {
     resize: none;
     width: 300px;
     height: 50px;
+}
+
+.review-form-textarea {
+    resize: none;
+    width: 300px;
+    height: 100px;
 }
