@@ -3,3 +3,47 @@
     background-color: #DBE8EE;
     height: 100vh;
 }
+
+.reviewsList--wrapper {
+    height: 100%;
+}
+
+.reviews-page-wrapper {
+    background-color: #DBE8EE;
+    height: 100%;
+    padding-top: 50px;
+}
+
+.reviews-page-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+
+.review--row {
+    border-radius: 6px;
+    background-color: white;
+    padding: 20px;
+    width: 50%;
+    margin-bottom: 40px;
+}
+
+.review-row-header {
+    border-bottom: 1px solid #DBE8EE;
+    padding-bottom: 20px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+}
+
+.review-row-header-doctor {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+ .review-row-body {
+     padding-top: 20px;
+ }
+
+
