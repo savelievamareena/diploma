@@ -9,6 +9,16 @@ body {
     height: 100%;
 }
 
+input {
+    font-family: 'Montserrat', 'Yeseva One', 'Segoe UI', 'Roboto', 'Oxygen', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+select {
+    font-family: 'Montserrat', 'Yeseva One', 'Segoe UI', 'Roboto', 'Oxygen', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

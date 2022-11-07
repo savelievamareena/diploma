@@ -44,7 +44,7 @@ export default function PersonalInfoManageContent() {
     }, [])
 
     React.useEffect(() => {
-        const dateToSave = date.toJSON().slice(0, 10);
+        const dateToSave = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
 
         setFormData(prevFormData => {
             return {

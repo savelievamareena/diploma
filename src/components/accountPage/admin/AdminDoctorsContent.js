@@ -43,7 +43,7 @@ export default function AdminDoctorsContent() {
             .then(data => {setSpecializations([...data])});
     }, [successMessage])
 
-    //selects prepare
+    //select options prepare
     const selectSpecOptions = specializations.map((val, key) => {
         return(
             <option key={key} value={val.id}>{val.title}</option>
@@ -183,8 +183,7 @@ export default function AdminDoctorsContent() {
             <DoctorRow
                 key={key}
                 id={val.id}
-                firstName={val.firstName}
-                lastName={val.lastName}
+                fullName={val.fullName}
                 bio={val.bio}
                 specialization={val.specialization.title}
                 education={val.education}
@@ -208,7 +207,28 @@ export default function AdminDoctorsContent() {
             </div>
             <div className="message">{errorMessage ? errorMessage : null}</div>
             <div className="success-message">{successMessage ? successMessage : null}</div>
-            {doctorsForAdmin}
+            {
+                doctors.length > 0 &&
+                <table className="table">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Имя</th>
+                        <th>Специализация</th>
+                        <th>Описание</th>
+                        <th>Образование</th>
+                        <th>Стаж</th>
+                        <th>Ставка</th>
+                        <th>Категория</th>
+                        <th></th>
+                        <th className="empty"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {doctorsForAdmin}
+                    </tbody>
+                </table>
+            }
             <div className="edit-doctor-popup" style={{display: popupShown ? 'block' : 'none' }}>
                 <div className="close--callback-form" onClick={closeFormHandler}>
                     <FaRegWindowClose/>

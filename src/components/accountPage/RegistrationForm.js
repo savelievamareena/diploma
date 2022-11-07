@@ -34,7 +34,7 @@ export default function RegistrationForm() {
     }
 
     React.useEffect(() => {
-        const dateToSave = date.toJSON().slice(0, 10);
+        const dateToSave = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
 
         setFormData(prevFormData => {
             return {
@@ -98,7 +98,7 @@ export default function RegistrationForm() {
                             onChange={setDate}
                             value={date}
                             format="dd-MM-y"
-                            locale="hu-HU"
+                            locale="ru-RU"
                         />
                     </div>
                     <div className="phoneNumber form--row">
