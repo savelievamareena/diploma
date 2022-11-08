@@ -1,0 +1,91 @@
+.appointment-step {
+    padding: 40px;
+}
+
+.appointment--content-wrapper {
+    margin: 100px auto;
+    width: 80%;
+    background-color: #DBE8EE;
+}
+
+.app-row {
+    background-color: white;
+    margin-bottom: 10px;
+    padding: 8px 8px;
+    cursor: pointer;
+}
+
+.app-row:hover {
+    border-radius: 8px;
+    box-shadow: 3px 3px #c1c2c1;
+}
+
+.doctorsToShow img {
+    height: 50px;
+    width: 50px;
+}
+
+.doctorsToShow, .serviceToShow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.offer-description {
+    width: 60%;
+    margin-right: 0;
+}
+
+.appointments--back-arrow {
+    padding-left: 40px;
+    padding-top: 20px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.price {
+    font-weight: bold;
+    width: 10%;
+}
+
+.service-title {
+    width: 30%;
+}
+
+.serviceToShow {
+    gap: 20px;
+}
+
+.underlined {
+    text-decoration: underline;
+}
+
+.appointment-select {
+    width: 140px;
+    padding: 6px 4px;
+}
+
+.slots-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 300px;
+    padding-top: 50px;
+}
+
+.app-slot {
+    background-color: white;
+    padding: 8px;
+    border: 1px solid #DBE8EE;
+    margin: 10px 10px 0 0;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 2px 2px #c1c2c1;
+    width: 45px;
+}
+
+.app-slot:hover {
+    box-shadow: 4px 4px #c1c2c1;
+    cursor: pointer;
+}

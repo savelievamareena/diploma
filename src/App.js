@@ -18,6 +18,7 @@ import Contacts from "./pages/aboutUs/Contacts";
 import Faq from "./pages/aboutUs/Faq";
 import Department from "./pages/Department"
 import ReviewsList from "./pages/ReviewsList";
+import UserAppointment from "./pages/userProfile/UserAppointment";
 
 
 export default function App() {
@@ -36,7 +37,9 @@ export default function App() {
                     <Route path="/admin/callback" element={<AdminCallback />} />
                     <Route path="/admin/profile" element={<AdminInfo />} />
                     <Route path="/admin/reviews" element={<AdminReviews />} />
+
                     <Route path="/account/visits" element={<UserVisits />} />
+                    <Route path="/account/appointment" element={<UserAppointment />} />
 
                     <Route path="/history" element={<History />} />
                     <Route path="/contacts" element={<Contacts />} />
