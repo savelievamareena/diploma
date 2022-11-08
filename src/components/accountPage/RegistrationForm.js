@@ -21,7 +21,7 @@ export default function RegistrationForm() {
             dateOfBirth: ""
         }
     );
-    const [date, setDate] = React.useState(new Date());
+    const [date, setDate] = React.useState(new Date('2010-01-01'));
 
     function handleChange(event) {
         const {name, value} = event.target;
@@ -99,6 +99,8 @@ export default function RegistrationForm() {
                             value={date}
                             format="dd-MM-y"
                             locale="ru-RU"
+                            clearIcon={null}
+                            maxDate={new Date('2010-01-01')}
                         />
                     </div>
                     <div className="phoneNumber form--row">

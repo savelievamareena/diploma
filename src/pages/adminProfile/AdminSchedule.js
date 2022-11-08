@@ -291,6 +291,8 @@ export default function AdminSchedule() {
                                         value={dateScheduleDate}
                                         format="dd-MM-y"
                                         locale="ru-RU"
+                                        clearIcon={null}
+                                        minDate={new Date()}
                                     />
                                 </div>
                                 <div className="datepicker form--row">

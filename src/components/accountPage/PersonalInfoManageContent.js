@@ -8,7 +8,7 @@ export default function PersonalInfoManageContent() {
     const userId = cookies.userId;
 
     const [message, setMessage] = React.useState("");
-    const [date, setDate] = React.useState(new Date());
+    const [date, setDate] = React.useState(new Date('2010-01-01'));
     const [formData, setFormData] = React.useState(
         {
             firstName: "",
@@ -27,10 +27,13 @@ export default function PersonalInfoManageContent() {
         fetchData()
             .then(data => {
                 const dateReceived = data.dateOfBirth;
-                const dateFullString = dateReceived + "T12:00:00Z";
-                const dateObj = new Date(dateFullString);
-                setDate(dateObj)
-
+                if(dateReceived != null) {
+                    const dateFullString = dateReceived + "T12:00:00Z";
+                    const dateObj = new Date(dateFullString);
+                    setDate(dateObj)
+                }else {
+                    setDate("")
+                }
                 setFormData(prevFormData => {
                     return {
                         ...prevFormData,
@@ -44,8 +47,10 @@ export default function PersonalInfoManageContent() {
     }, [])
 
     React.useEffect(() => {
-        const dateToSave = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
-
+        let dateToSave = "";
+        if(date != null) {
+            dateToSave = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+        }
         setFormData(prevFormData => {
             return {
                 ...prevFormData,
@@ -118,7 +123,9 @@ export default function PersonalInfoManageContent() {
                             onChange={setDate}
                             value={date}
                             format="dd-MM-y"
-                            locale="hu-HU"
+                            locale="ru-Ru"
+                            clearIcon={null}
+                            maxDate={new Date('2010-01-01')}
                         />
                     </div>
                     <div className="phoneNumber form--row">
