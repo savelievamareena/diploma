@@ -47,7 +47,7 @@ export default function App() {
                     <Route path="/doctors" element={<DoctorsList />} />
                     <Route path="/reviews" element={<ReviewsList />} />
 
-                    <Route path="/department/:id" component={<Department/>} />
+                    <Route path="/department/:id" element={<Department/>} />
                 </Routes>
             </BrowserRouter>
         </div>
