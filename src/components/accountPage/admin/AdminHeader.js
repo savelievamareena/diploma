@@ -22,7 +22,7 @@ export default function AdminHeader() {
         });
         const resJson = await res.json();
         if (res.status === 200) {
-            navigate('/');
+            navigate('/login');
         } else {
             console.log(resJson.message);
         }
@@ -30,10 +30,16 @@ export default function AdminHeader() {
     return (
         <div className="adminHeader--wrapper">
             <div className="adminHeader-menu">
-                <div className="admin--welcome">
+                <div>
+                    <a href="/">вернуться на главную</a>
+                </div>
+                <div>
+                    <div className="admin--welcome">
                     Добро пожаловать, {cookies.role === "admin" ? "admin" : "уважаемый клиент"}.
                 </div>
-                <button onClick={handleLogout}>Выйти</button>
+                    <button onClick={handleLogout}>Выйти</button>
+                </div>
+
             </div>
         </div>
     )
