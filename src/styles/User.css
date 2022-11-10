@@ -89,3 +89,8 @@
     box-shadow: 4px 4px #c1c2c1;
     cursor: pointer;
 }
+
+.app-submit-button {
+    margin-top: 30px;
+    padding: 8px 4px;
+}

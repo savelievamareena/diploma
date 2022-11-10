@@ -112,9 +112,9 @@ export default function UserAppointment() {
             <div className="account--content-wrapper">
                 <Sidebar sidebarData={SidebarDataUser} />
                 <div className="appointment--content-wrapper">
-                    <h1 className="appointments--back-arrow" onClick={handleBackClick}>
-                        {blockToShow > 1 && <MdArrowBack />}
-                    </h1>
+                    {/*<h1 className="appointments--back-arrow" onClick={handleBackClick}>*/}
+                    {/*    {blockToShow > 1 && <MdArrowBack />}*/}
+                    {/*</h1>*/}
                     <div className="1-specializationsBlock appointment-step"
                          style={{display: blockToShow === 1 ? 'block' : 'none' }}
                     >
@@ -144,7 +144,6 @@ export default function UserAppointment() {
                                 service={service}
                             /> : <h4>К сожалению, у данного специалиста нет свободных слотов на прием.</h4>
                         }
-
                     </div>
                 </div>
             </div>
