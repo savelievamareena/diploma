@@ -20,6 +20,7 @@ import Department from "./pages/Department"
 import ReviewsList from "./pages/ReviewsList";
 import UserAppointment from "./pages/userProfile/UserAppointment";
 import DoctorPage from "./pages/DoctorPage";
+import AdminRegistration from "./components/accountPage/AdminRegistration";
 
 export default function App() {
     return (
@@ -31,6 +32,7 @@ export default function App() {
                     <Route path="/admin" element={<Admin />} />
                     <Route path="/register" element={<RegistrationForm />} />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/special-register-admin-for-zdorovye-clinic" element={<AdminRegistration />} />
 
                     <Route path="/admin/doctors" element={<AdminDoctors />} />
                     <Route path="/admin/schedule" element={<AdminSchedule />} />

@@ -260,3 +260,7 @@ button:hover {
 .strong {
     font-weight: bold;
 }
+
+.admin-register-wrapper {
+    text-align: center;
+}
