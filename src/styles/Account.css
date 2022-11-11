@@ -204,7 +204,6 @@ table.table {
 .table-button {
     cursor: pointer;
     padding: 6px;
-
 }
 
 .table th, .table td {
@@ -246,4 +245,22 @@ button:hover {
 
 .timeCell {
     text-align: right !important;
+}
+
+.visit-tabs-wrapper {
+    margin: 20px;
+}
+
+.react-tabs__tab--selected {
+    background: #DBE8EE !important;
+}
+
+.appointment-row-admin {
+    background-color: #DBE8EE;
+    padding: 10px;
+    margin: 20px;
+}
+
+.strong {
+    font-weight: bold;
 }

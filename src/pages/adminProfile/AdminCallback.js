@@ -3,8 +3,19 @@ import Sidebar from "../../components/accountPage/Sidebar";
 import AdminHeader from "../../components/accountPage/admin/AdminHeader";
 import {SidebarDataAdmin} from "../../dataSources/SidebarDataAdmin";
 import CallBackRequestCard from "../../components/accountPage/admin/CallBackRequestCard";
+import {useNavigate} from "react-router";
+import {useCookies} from "react-cookie";
 
 export default function AdminCallback() {
+    const navigate = useNavigate();
+    const [cookies] = useCookies();
+
+    React.useEffect(() => {
+        if (cookies.role === "user") {
+            navigate("/");
+        }
+    }, [cookies, navigate])
+
     const [callBackRequests, setCallbackRequests] = React.useState([]);
     const [errorMessage, setErrorMessage] = React.useState("");
 

@@ -3,7 +3,6 @@ import Sidebar from "../../components/accountPage/Sidebar";
 import AdminHeader from "../../components/accountPage/admin/AdminHeader";
 import {SidebarDataUser} from "../../dataSources/SidebarDataUser";
 import '../../styles/User.css';
-import {MdArrowBack} from "react-icons/md";
 import AppointmentsComponent from "../../components/accountPage/user/AppointmentsComponent";
 
 export default function UserAppointment() {
@@ -14,9 +13,7 @@ export default function UserAppointment() {
     const [selectedDoctorId, setSelectedDoctor] = React.useState();
     const [services, setServices] = React.useState([]);
     const [service, setService] = React.useState();
-    const [selectedServiceId, setSelectedService] = React.useState();
     const [schedules, setSchedules] = React.useState([]);
-    // const [selectedSchedule, setSelectedSchedule] = React.useState();
 
     const [blockToShow, setBlockToShow] = React.useState(1);
 
@@ -61,7 +58,6 @@ export default function UserAppointment() {
 
     function handleServiceSelect(event) {
         const serviceId = event.currentTarget.getAttribute("data-id");
-        setSelectedService(serviceId);
         const serviceToPass = services.find(x => x.id == serviceId);
         setService(serviceToPass);
 
@@ -73,10 +69,6 @@ export default function UserAppointment() {
             .then(data => {setSchedules([...data])});
 
         setBlockToShow(prevBlockToShow => {return prevBlockToShow + 1})
-    }
-
-    function handleBackClick() {
-        setBlockToShow(prevBlockToShow => {return prevBlockToShow - 1})
     }
 
     const specializationsToShow = specializations.map((val, i) => {
@@ -112,9 +104,6 @@ export default function UserAppointment() {
             <div className="account--content-wrapper">
                 <Sidebar sidebarData={SidebarDataUser} />
                 <div className="appointment--content-wrapper">
-                    {/*<h1 className="appointments--back-arrow" onClick={handleBackClick}>*/}
-                    {/*    {blockToShow > 1 && <MdArrowBack />}*/}
-                    {/*</h1>*/}
                     <div className="1-specializationsBlock appointment-step"
                          style={{display: blockToShow === 1 ? 'block' : 'none' }}
                     >

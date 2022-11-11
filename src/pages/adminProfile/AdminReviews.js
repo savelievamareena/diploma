@@ -3,8 +3,19 @@ import Sidebar from "../../components/accountPage/Sidebar";
 import AdminHeader from "../../components/accountPage/admin/AdminHeader";
 import {SidebarDataAdmin} from "../../dataSources/SidebarDataAdmin";
 import ReviewCard from "../../components/accountPage/admin/ReviewCard";
+import {useNavigate} from "react-router";
+import {useCookies} from "react-cookie";
 
 export default function AdminReviews() {
+    const navigate = useNavigate();
+    const [cookies] = useCookies();
+
+    React.useEffect(() => {
+        if (cookies.role === "user") {
+            navigate("/");
+        }
+    }, [cookies, navigate])
+
     const [reviews, setReviews] = React.useState([]);
     const [errorMessage, setErrorMessage] = React.useState("");
     const [successMessage, setSuccessMessage] = React.useState("");

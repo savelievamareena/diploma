@@ -21,7 +21,6 @@ import ReviewsList from "./pages/ReviewsList";
 import UserAppointment from "./pages/userProfile/UserAppointment";
 import DoctorPage from "./pages/DoctorPage";
 
-
 export default function App() {
     return (
         <div className="App">

@@ -5,8 +5,19 @@ import {SidebarDataAdmin} from "../../dataSources/SidebarDataAdmin";
 import ScheduleRow from "../../components/accountPage/admin/ScheduleRow";
 import {FaRegWindowClose} from "react-icons/fa";
 import DatePicker from "react-date-picker";
+import {useNavigate} from "react-router";
+import {useCookies} from "react-cookie";
 
 export default function AdminSchedule() {
+    const navigate = useNavigate();
+    const [cookies] = useCookies();
+
+    React.useEffect(() => {
+        if (cookies.role === "user") {
+            navigate("/");
+        }
+    }, [cookies, navigate])
+
     const [schedules, setSchedules] = React.useState([]);
     const [doctors, setDoctors] = React.useState([]);
     const [formData, setFormData] = React.useState({
