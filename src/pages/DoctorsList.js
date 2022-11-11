@@ -22,6 +22,7 @@ export default function DoctorsList() {
             fullName={doctor.firstName + " " + doctor.lastName}
             photo={doctor.profilePhotoLink}
             bio={doctor.bio}
+            id={doctor.id}
         />
     })
 

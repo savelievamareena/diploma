@@ -19,6 +19,7 @@ import Faq from "./pages/aboutUs/Faq";
 import Department from "./pages/Department"
 import ReviewsList from "./pages/ReviewsList";
 import UserAppointment from "./pages/userProfile/UserAppointment";
+import DoctorPage from "./pages/DoctorPage";
 
 
 export default function App() {
@@ -45,6 +46,7 @@ export default function App() {
                     <Route path="/contacts" element={<Contacts />} />
                     <Route path="/faq" element={<Faq />} />
                     <Route path="/doctors" element={<DoctorsList />} />
+                    <Route path="/doctor/:id" element={<DoctorPage />} />
                     <Route path="/reviews" element={<ReviewsList />} />
 
                     <Route path="/department/:id" element={<Department/>} />

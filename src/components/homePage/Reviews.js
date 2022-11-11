@@ -102,6 +102,12 @@ export default function Reviews(props) {
     }
 
     function handleOpenPopup() {
+        setSuccessMessage("")
+        setFormData({
+            doctorId: 0,
+            reviewText: "",
+            sender: "",
+        })
         setPopupShown(true);
     }
 

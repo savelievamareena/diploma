@@ -65,7 +65,15 @@
 }
 
 .adminHeader-menu {
-    padding-right: 20px;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+}
+
+.adminHeader-menu a {
+    color: black;
 }
 
 .form--edit {

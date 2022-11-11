@@ -4,11 +4,12 @@ import profilePic from "../../images/noProfilePhoto.png";
 
 export default function DoctorCard(props) {
     const photoUrl = props.photo ? props.photo : profilePic
+    const docUrl = "/doctor/" + props.id;
 
     return (
         <div className="doctorCard--wrapper">
             <div className="doctorCard--profilePic">
-                <img src={photoUrl} alt=""/>
+                <a href={docUrl}><img src={photoUrl} alt=""/></a>
             </div>
             <h4>{props.fullName}</h4>
             <div>{props.bio}</div>

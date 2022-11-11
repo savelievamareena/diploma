@@ -6,9 +6,8 @@ export default function Department() {
     const routeAsArr = route.split('/');
     const departmentId = routeAsArr[routeAsArr.length - 1];
 
-    const [depWithServices, setDepWithServices] = React.useState([]);
+    const [servicesWithDepartment, setServicesWithDepartment] = React.useState([]);
     const [department, setDepartment] = React.useState("");
-    const [services, setServices] = React.useState([]);
 
     React.useEffect(() => {
         const fetchData = async () => {
@@ -17,22 +16,21 @@ export default function Department() {
         }
         fetchData()
             .then(data => {
-                setDepWithServices([...data])
+                setServicesWithDepartment([...data])
             });
     }, [departmentId])
 
     React.useEffect(() => {
-        if(depWithServices.length > 0) {
-            console.log(depWithServices[0].specialization)
-            setDepartment(depWithServices[0].specialization.department.title);
+        if(servicesWithDepartment.length > 0) {
+            setDepartment(servicesWithDepartment[0].specialization.department.title);
         }
 
-    }, [depWithServices])
+    }, [servicesWithDepartment])
 
-    const serviceElements = depWithServices.map((val, i) => {
+    const serviceElements = servicesWithDepartment.map((val, i) => {
         return(
-            <div className="services-row">
-                <div class="services-first-row">
+            <div className="services-row" key={i}>
+                <div className="services-first-row">
                     <div>{val.title}</div>
                     <h4>{val.price} рублей</h4>
                 </div>
@@ -46,7 +44,7 @@ export default function Department() {
             <Header/>
             <div className="services-page-wrapper">
                 <div className="department-title-wrapper">
-                    <h1>{department}</h1>
+                    <h1>{department && department}</h1>
                 </div>
                 <div className="services-list-wrapper">
                     {serviceElements}
