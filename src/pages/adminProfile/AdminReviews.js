@@ -89,6 +89,14 @@ export default function AdminReviews() {
         )
     })
 
+    function renderInputField() {
+        if(reviews.length > 0) {
+            return <div className="admin-reviews-wrapper">{reviewCards}</div>;
+        } else {
+            return <div className="admin-reviews-wrapper">Нет отзывов на модерацию</div>;
+        }
+    }
+
     return (
         <div className="admin--wrapper">
             <AdminHeader/>
@@ -96,12 +104,12 @@ export default function AdminReviews() {
                 <Sidebar sidebarData={SidebarDataAdmin} />
                 <div>
                     <div className="admin-reviews-messages">
-                        <div className="message">{errorMessage ? errorMessage : null}</div>
-                        <div className="success-message">{successMessage ? successMessage : null}</div>
+                        {errorMessage && <div className="message">{errorMessage}</div>}
+                        {successMessage && <div className="success-message">{successMessage}</div>}
                     </div>
-                    <div className="admin-reviews-wrapper">
-                        {reviewCards}
-                    </div>
+                    {
+                        renderInputField()
+                    }
                 </div>
             </div>
         </div>

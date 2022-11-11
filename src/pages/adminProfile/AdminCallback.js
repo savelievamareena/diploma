@@ -16,17 +16,20 @@ export default function AdminCallback() {
         }
     }, [cookies, navigate])
 
-    const [callBackRequests, setCallbackRequests] = React.useState([]);
     const [errorMessage, setErrorMessage] = React.useState("");
+    const [successMessage, setSuccessMessage] = React.useState("");
+
+    const [callBackRequests, setCallbackRequests] = React.useState([]);
 
     React.useEffect(() => {
         const fetchData = async () => {
             const result = await fetch('http://localhost:8080/api/callback')
             return result.json();
         }
-        fetchData()
-            .then(data => {setCallbackRequests(prevCallBackRequests => [...data]);});
-    }, [callBackRequests])
+        fetchData().then(data => {
+            setCallbackRequests([...data])
+        });
+    }, [successMessage])
 
     async function handleClick(event) {
         const elementId = event.currentTarget.parentNode.getAttribute("data-id");
@@ -42,8 +45,14 @@ export default function AdminCallback() {
         } else {
             if(resJson.message) {
                 setErrorMessage(resJson.message);
+            }else {
+                setSuccessMessage("Обработано!")
             }
         }
+        setTimeout(() => {
+            setErrorMessage("");
+            setSuccessMessage("");
+        }, 1000)
     }
 
     const callBackRequestCards = callBackRequests.map((val, key) => {
@@ -55,18 +64,31 @@ export default function AdminCallback() {
                 question={val.question}
                 handleClick={handleClick}
                 id={val.id}
-                errorMessage={errorMessage}
             />
         )
     })
+
+    function renderCallBackRequestCards() {
+        if(callBackRequests.length > 0) {
+            return <div className="callBack-cards-wrapper">{callBackRequestCards}</div>;
+        } else {
+            return <div className="admin-reviews-wrapper">Запросы на обратный звонок отсутствуют</div>;
+        }
+    }
 
     return (
         <div className="admin--wrapper">
             <AdminHeader/>
             <div className="account--content-wrapper">
                 <Sidebar sidebarData={SidebarDataAdmin} />
-                <div className="callBack-cards-wrapper">
-                    {callBackRequestCards}
+                <div>
+                    <div className="admin-reviews-messages">
+                        {errorMessage && <div className="message">{errorMessage}</div>}
+                        {successMessage && <div className="success-message">{successMessage}</div>}
+                    </div>
+                    {
+                        renderCallBackRequestCards()
+                    }
                 </div>
             </div>
         </div>
