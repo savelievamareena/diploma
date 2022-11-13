@@ -69,11 +69,6 @@ export default function Reviews(props) {
     }
 
     function closeFormHandler() {
-        setFormData({
-            doctorId: "0",
-            reviewText: "",
-            sender: "",
-        })
         setPopupShown(false);
     }
 
