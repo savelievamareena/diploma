@@ -15,7 +15,8 @@ export default function PersonalInfoManageContent() {
             lastName: "",
             phoneNumber: "",
             email: "",
-            dateOfBirth: ""
+            dateOfBirth: "",
+            password: ""
         }
     );
 
@@ -147,6 +148,16 @@ export default function PersonalInfoManageContent() {
                                placeholder="Email"
                                value={formData.email}
                                required
+                               onChange={handleChange}
+                        />
+                    </div>
+                    <div className="email form--row">
+                        <label className="form__label" htmlFor="password">Пароль</label>
+                        <input className="form__input"
+                               name="password"
+                               type="password"
+                               placeholder="Пароль"
+                               value={formData.password}
                                onChange={handleChange}
                         />
                     </div>

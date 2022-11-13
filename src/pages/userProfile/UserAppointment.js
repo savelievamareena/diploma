@@ -88,12 +88,21 @@ export default function UserAppointment() {
         )
     })
 
+    function renderDoctors() {
+        if(doctors.length > 0) {
+            return <div>{doctorsToShow}</div>;
+        } else {
+            return <div>К сожалению, прием к докторам с этой специализацией сейчас не доступен</div>;
+        }
+    }
+
     const servicesToShow = services.map((val, i) => {
+        const priceCalculated = (val.price * doctor.fee).toFixed(2);
         return(
             <div className="serviceToShow app-row" key={i} data-id={val.id} onClick={handleServiceSelect}>
                 <div className="service-title">{val.title}</div>
                 <div className="offer-description">{val.description}</div>
-                <div className="price">{val.price} рублей</div>
+                <div className="price">{priceCalculated} рублей</div>
             </div>
         )
     })
@@ -113,7 +122,7 @@ export default function UserAppointment() {
                     <div className="2-specializationsBlock appointment-step"
                          style={{display: blockToShow === 2 ? 'block' : 'none' }}
                     >
-                        {doctorsToShow}
+                        {renderDoctors()}
                     </div>
 
                     <div className="3-specializationsBlock appointment-step"

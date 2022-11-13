@@ -91,28 +91,30 @@ export default function UserVisits() {
             <AdminHeader/>
             <div className="account--content-wrapper">
                 <Sidebar sidebarData={SidebarDataUser} />
-                <div className="admin-reviews-messages">
-                    <div className="message">{errorMessage ? errorMessage : null}</div>
-                    <div className="success-message">{successMessage ? successMessage : null}</div>
-                </div>
-                <div className="visit-tabs-wrapper">
-                    <Tabs >
-                        <TabList>
-                            <Tab>Предстоящие визиты</Tab>
-                            <Tab>Прошедшие визиты</Tab>
-                        </TabList>
+                <div>
+                    <div className="admin-reviews-messages">
+                        <div className="message">{errorMessage ? errorMessage : null}</div>
+                        <div className="success-message">{successMessage ? successMessage : null}</div>
+                    </div>
+                    <div className="visit-tabs-wrapper">
+                        <Tabs >
+                            <TabList>
+                                <Tab>Предстоящие визиты</Tab>
+                                <Tab>Прошедшие визиты</Tab>
+                            </TabList>
 
-                        <TabPanel>
-                            <div>
-                                {appointmentsActiveToShow}
-                            </div>
-                        </TabPanel>
-                        <TabPanel>
-                            <div>
-                                {appointmentsPastToShow}
-                            </div>
-                        </TabPanel>
-                    </Tabs>
+                            <TabPanel>
+                                <div>
+                                    {appointmentsActiveToShow}
+                                </div>
+                            </TabPanel>
+                            <TabPanel>
+                                <div>
+                                    {appointmentsPastToShow}
+                                </div>
+                            </TabPanel>
+                        </Tabs>
+                    </div>
                 </div>
             </div>
         </div>
