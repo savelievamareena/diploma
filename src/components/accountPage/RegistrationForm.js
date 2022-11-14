@@ -2,13 +2,11 @@ import React from "react";
 import '../../styles/AuthForms.css';
 import Header from "../Header";
 import {useNavigate} from "react-router";
-import {useCookies} from "react-cookie";
 import DatePicker from 'react-date-picker';
 
 export default function RegistrationForm() {
     const navigate = useNavigate();
 
-    const [cookies] = useCookies();
     const [errorMessage, setErrorMessage] = React.useState("");
     const [formData, setFormData] = React.useState(
         {
@@ -18,17 +16,18 @@ export default function RegistrationForm() {
             email: "",
             password: "",
             confirmPassword: "",
-            dateOfBirth: ""
+            dateOfBirth: "",
+            agreement: false
         }
     );
     const [date, setDate] = React.useState(new Date('2010-01-01'));
 
     function handleChange(event) {
-        const {name, value} = event.target;
+        const {name, value, type, checked} = event.target;
         setFormData(prevFormData => {
             return {
                 ...prevFormData,
-                [name]: value
+                [name]: type === "checkbox" ? checked : value
             }
         })
     }
@@ -146,6 +145,16 @@ export default function RegistrationForm() {
                                required
                                onChange={handleChange}
                         />
+                    </div>
+                    <div>
+                        <input
+                            type="checkbox"
+                            checked={formData.agreement}
+                            onChange={handleChange}
+                            name="agreement"
+                            required
+                        />
+                        <label htmlFor="agreement">Подтверждаю свое согласие на хранение и обработку персональных данных</label>
                     </div>
                 </div>
                 <div className="message">{errorMessage && <span>{errorMessage}</span>}</div>
