@@ -175,7 +175,7 @@ export default function Admin() {
                 </div>
 
                 {/*popup block*/}
-                <div className="appointment-report-card" style={{display: popupShown ? 'block' : 'none' }}>
+                <div className="appointment-report-card popup-window" style={{display: popupShown ? 'block' : 'none' }}>
                     <div className="close--callback-form" onClick={closeFormHandler}>
                         <FaRegWindowClose/>
                     </div>

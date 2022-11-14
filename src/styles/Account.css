@@ -256,6 +256,12 @@ button:hover {
     padding: 10px;
     margin: 20px;
     position: relative;
+    min-width: 520px;
+}
+
+.admin-review-buttons {
+    width: 50%;
+    cursor: pointer;
 }
 
 .strong {
@@ -269,14 +275,17 @@ button:hover {
 .appointment-report-card {
     min-height: 500px;
     min-width: 500px;
-    position: absolute;
     top: 50%;
     left: 70%;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 0 0 2px rgb(255, 255, 255), 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
-    background-color: white;
-    border-radius: 6px;
-    z-index: 999;
+    text-align: center;
+    display: none;
+}
+
+.appointment-report-card-user {
+    min-height: 300px;
+    width: 600px;
+    top: 50%;
+    left: 70%;
     text-align: center;
     display: none;
 }
@@ -290,4 +299,17 @@ button:hover {
     resize: none;
     width: 400px;
     height: 300px;
+}
+
+.report-container {
+    padding: 20px;
+}
+
+.popup-window {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 0 2px rgb(255, 255, 255), 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+    background-color: white;
+    border-radius: 6px;
+    z-index: 999;
 }

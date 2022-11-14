@@ -5,6 +5,7 @@ import {SidebarDataUser} from "../../dataSources/SidebarDataUser";
 import {useCookies} from "react-cookie";
 import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
 import 'react-tabs/style/react-tabs.css';
+import {FaRegWindowClose} from "react-icons/fa";
 
 export default function UserVisits() {
     const [cookies] = useCookies();
@@ -13,6 +14,8 @@ export default function UserVisits() {
 
     const [appointmentsActive, setAppointmentsActive] = React.useState([]);
     const [appointmentsPast, setAppointmentsPast] = React.useState([]);
+    const [popupShown, setPopupShown] = React.useState(false);
+    const [report, setReport] = React.useState("");
 
     React.useEffect(() => {
         const fetchData = async () => {
@@ -59,13 +62,22 @@ export default function UserVisits() {
                 <div><span className="strong">Услуга:</span> {val.service.title}</div>
                 <div><span className="strong">Дата:</span> {val.schedule.scheduleDate}</div>
                 <div><span className="strong">Начало:</span> {val.beginning}</div>
+                {
+                    val.report != null &&
+                    <div className="admin-review-buttons" data-id={val.id}>
+                        <button type="reject-button" onClick={handleOpenReport}>
+                            Посмотреть заключение
+                        </button>
+                    </div>
+                }
+
             </div>
         )
     })
 
     async function handleReject(event) {
-        const reviewId = event.currentTarget.parentNode.getAttribute("data-id");
-        const res = await fetch("http://localhost:8080/api/appointments/" + reviewId, {
+        const appointmentId = event.currentTarget.parentNode.getAttribute("data-id");
+        const res = await fetch("http://localhost:8080/api/appointments/" + appointmentId, {
             method: "DELETE",
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include'
@@ -84,6 +96,19 @@ export default function UserVisits() {
             setErrorMessage("");
             setSuccessMessage("");
         }, 1000)
+    }
+
+    function handleOpenReport(event) {
+        const appointmentId = event.currentTarget.parentNode.getAttribute("data-id");
+        const appToOpen = appointmentsPast.find(x => x.id == appointmentId);
+        setReport(appToOpen.report.text);
+
+        setPopupShown(true);
+    }
+
+    function closePopupHandler() {
+        setPopupShown(false);
+        setReport("");
     }
 
     return (
@@ -114,6 +139,17 @@ export default function UserVisits() {
                                 </div>
                             </TabPanel>
                         </Tabs>
+                    </div>
+
+                    {/*popup block*/}
+                    <div className="appointment-report-card-user popup-window" style={{display: popupShown ? 'block' : 'none' }}>
+                        <div className="close--callback-form" onClick={closePopupHandler}>
+                            <FaRegWindowClose/>
+                        </div>
+                        <h3>Заключение врача по итогам приема пациента</h3>
+                        <div className="report-container">
+                            {report}
+                        </div>
                     </div>
                 </div>
             </div>
