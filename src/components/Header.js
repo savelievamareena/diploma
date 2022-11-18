@@ -3,12 +3,8 @@ import '../styles/Header.css';
 import logo from "../images/logo.png"
 import {Link} from "react-router-dom";
 import {useCookies} from "react-cookie";
-import {useNavigate} from "react-router";
-
 
 export default function Header() {
-    // const navigate = useNavigate();
-
     const [cookies] = useCookies();
     const [departments, setDepartments] = React.useState([])
 
@@ -43,22 +39,6 @@ export default function Header() {
     function hideDropdownMenuItem(event) {
         event.currentTarget.style.display = 'none';
     }
-
-    // async function handleLogout(event) {
-    //     event.preventDefault();
-    //
-    //     const res = await fetch("http://localhost:8080/api/auth/logout", {
-    //         method: "GET",
-    //         headers: { 'Content-Type': 'application/json' },
-    //         credentials: 'include'
-    //     });
-    //     const resJson = await res.json();
-    //     if (res.status === 200) {
-    //         navigate('/');
-    //     } else {
-    //         console.log(resJson.message);
-    //     }
-    // }
 
     return(
         <div className="header--style">

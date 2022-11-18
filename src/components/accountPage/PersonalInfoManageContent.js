@@ -97,22 +97,22 @@ export default function PersonalInfoManageContent() {
             <form className="form--edit" onSubmit={handleSubmit}>
                 <div className="form-body">
                     <div className="firstName form--row">
-                        <label className="form__label" htmlFor="firstName">First Name</label>
+                        <label className="form__label" htmlFor="firstName">Имя</label>
                         <input className="form__input"
                                name="firstName"
                                type="text"
-                               placeholder="First Name"
+                               placeholder="Имя"
                                value={formData.firstName}
                                required
                                onChange={handleChange}
                         />
                     </div>
                     <div className="lastname form--row">
-                        <label className="form__label" htmlFor="lastName">Last Name</label>
+                        <label className="form__label" htmlFor="lastName">Фамилия</label>
                         <input className="form__input"
                                name="lastName"
                                type="text"
-                               placeholder="Last Name"
+                               placeholder="Фамилия"
                                value={formData.lastName}
                                required
                                onChange={handleChange}
@@ -130,22 +130,22 @@ export default function PersonalInfoManageContent() {
                         />
                     </div>
                     <div className="phoneNumber form--row">
-                        <label className="form__label" htmlFor="phoneNumber">Phone Number</label>
+                        <label className="form__label" htmlFor="phoneNumber">Номер телефона</label>
                         <input className="form__input"
                                name="phoneNumber"
                                type="text"
-                               placeholder="Phone Number"
+                               placeholder="Номер телефона"
                                value={formData.phoneNumber}
                                required
                                onChange={handleChange}
                         />
                     </div>
                     <div className="email form--row">
-                        <label className="form__label" htmlFor="email">Email</label>
+                        <label className="form__label" htmlFor="email">Электронная почта</label>
                         <input className="form__input"
                                name="email"
                                type="email"
-                               placeholder="Email"
+                               placeholder="Электронная почта"
                                value={formData.email}
                                required
                                onChange={handleChange}
@@ -164,7 +164,7 @@ export default function PersonalInfoManageContent() {
                 </div>
                 <div className="message">{message && <span>{message}</span>}</div>
                 <div className="form-footer centered-link-wrapper">
-                    <button type="submit" className="register-btn">Update</button>
+                    <button type="submit" className="register-btn">Обновить личные данные</button>
                 </div>
             </form>
         </div>

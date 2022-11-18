@@ -64,12 +64,12 @@ export default function Login() {
                 <form className="form" onSubmit={handleSubmit}>
                     <div className="form-body">
                         <div className="email form--row">
-                            <label className="form__label" htmlFor="email">Email </label>
+                            <label className="form__label" htmlFor="email">Электронная почта</label>
                             <input
                                 type="text"
                                 name="email"
                                 className="form__input"
-                                placeholder="Email"
+                                placeholder="Адрес электронной почты"
                                 required
                                 onChange={handleChange}
                                 value={formData.email}
@@ -77,12 +77,12 @@ export default function Login() {
 
                         </div>
                         <div className="password form--row">
-                            <label className="form__label" htmlFor="password">Password </label>
+                            <label className="form__label" htmlFor="password">Пароль</label>
                             <input
                                 type="password"
                                 name="password"
                                 className="form__input"
-                                placeholder="Password"
+                                placeholder="Пароль"
                                 required
                                 onChange={handleChange}
                                 value={formData.password}
@@ -92,7 +92,7 @@ export default function Login() {
                     </div>
                     <div className="message">{errorMessage && <span>{errorMessage}</span>}</div>
                     <div className="form-footer centered-link-wrapper">
-                        <button type="submit" className="register-btn">Log In</button>
+                        <button type="submit" className="register-btn">Войти</button>
                     </div>
                 </form>
             </div>

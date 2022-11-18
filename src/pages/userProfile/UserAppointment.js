@@ -82,7 +82,7 @@ export default function UserAppointment() {
     const doctorsToShow = doctors.map((val, i) => {
         return(
             <div className="doctorsToShow app-row" key={i} data-id={val.id} onClick={handleDocSelect}>
-                <div>{val.fullName} -- Категория: {val.category} -- Опыт: {val.yearsOfExperience} года</div>
+                <div>{val.fullName} -- Категория: {val.category} -- Опыт: {val.yearsOfExperience} лет</div>
                 <div><img src={val.profilePhotoLink} alt=""/></div>
             </div>
         )

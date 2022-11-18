@@ -20,14 +20,11 @@ export default function Doctors(props) {
             fullName={doctor.firstName + " " + doctor.lastName}
             photo={doctor.profilePhotoLink}
             bio={doctor.education}
+            id={doctor.id}
         />
     })
 
     const doctorsToDisplay = doctorCards.slice(0, 4);
-
-    function handleClick() {
-        navigate('/doctors');
-    }
 
     return (
         <div className="doctors--wrapper homepage--block">
@@ -36,7 +33,7 @@ export default function Doctors(props) {
                 {doctorsToDisplay}
             </div>
             <div className="doctors--buttonWrapper">
-                <button onClick={handleClick}>Show all doctors</button>
+                <a href="/doctors">Посмотреть всех врачей</a>
             </div>
         </div>
     )

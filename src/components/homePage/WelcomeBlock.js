@@ -56,12 +56,11 @@ export default function WelcomeBlock() {
         }
     }
 
-
     return(
         <div className="homepageMain--header homepage--block">
             <div className="homepageMain--headerText">
                 <h1>Мы рады, что вы выбрали наш центр.</h1>
-                <p>«Клиника Реакт» – многопрофильная медицинская компания, крупнейшая в частной медицине Республики Беларусь.
+                <p>«Клиника Здоровье» – многопрофильная медицинская компания, крупнейшая в частной медицине Республики Беларусь.
                 Работая с 1992 года, мы постоянно расширяем перечень услуг для пациентов, закупаем инновационное
                 оборудование и внедряем в практику самые передовые методы диагностики и лечения.</p>
                 <div className="callback-button" onClick={clickHandler}>
@@ -77,40 +76,40 @@ export default function WelcomeBlock() {
                 <form onSubmit={handleSubmit}>
                     <div className="form-body">
                         <div className="firstName form--row">
-                            <label className="form__label" htmlFor="firstName">First Name</label>
+                            <label className="form__label" htmlFor="firstName">Имя</label>
                             <input className="form__input"
                                    name="firstName"
                                    type="text"
-                                   placeholder="First Name"
+                                   placeholder="Имя"
                                    value={formData.firstName}
                                    required
                                    onChange={handleChange}
                             />
                         </div>
                         <div className="lastname form--row">
-                            <label className="form__label" htmlFor="lastName">Last Name</label>
+                            <label className="form__label" htmlFor="lastName">Фамилия</label>
                             <input className="form__input"
                                    name="lastName"
                                    type="text"
-                                   placeholder="Last Name"
+                                   placeholder="Фамилия"
                                    value={formData.lastName}
                                    required
                                    onChange={handleChange}
                             />
                         </div>
                         <div className="phoneNumber form--row">
-                            <label className="form__label" htmlFor="phoneNumber">Phone Number</label>
+                            <label className="form__label" htmlFor="phoneNumber">Номер телефона</label>
                             <input className="form__input"
                                    name="phoneNumber"
                                    type="text"
-                                   placeholder="Phone Number"
+                                   placeholder="Номер телефона"
                                    value={formData.phoneNumber}
                                    required
                                    onChange={handleChange}
                             />
                         </div>
                         <div className="phoneNumber form--row">
-                            <label className="form__label" htmlFor="phoneNumber">Phone Number</label>
+                            <label className="form__label" htmlFor="phoneNumber">Вопрос</label>
                             <textarea className=" callback-form-textarea"
                                 name="question"
                                 type="text"

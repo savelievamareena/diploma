@@ -2,20 +2,7 @@ import React from "react"
 import '../../styles/Homepage.css';
 
 export default function Offers() {
-    const [offers, setOffers] = React.useState([]);
     const [departments, setDepartments] = React.useState([]);
-    const [infoBlock, setInfoBlock] = React.useState([]);
-    let offer;
-
-    // React.useEffect(() => {
-    //     const fetchData = async () => {
-    //         const result = await fetch('http://localhost:8080/api/offers')
-    //         return result.json();
-    //     }
-    //     fetchData()
-    //         .then(data => {setOffers(() => [...data]);});
-    //
-    // }, [])
 
     React.useEffect(() => {
         const fetchData = async () => {

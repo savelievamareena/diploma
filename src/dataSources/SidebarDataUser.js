@@ -4,17 +4,17 @@ import {HiOutlineCog} from "react-icons/hi";
 
 export const SidebarDataUser = [
     {
-        title: "My Profile",
+        title: "Мои данные",
         icon: <HiOutlineCog/>,
         link: "/account"
     },
     {
-        title: "Visits",
+        title: "Визиты",
         icon: <AiOutlineFileText/>,
         link: "/account/visits"
     },
     {
-        title: "Make an appointment",
+        title: "Записаться на прием",
         icon: <AiOutlineClockCircle/>,
         link: "/account/appointment"
     }

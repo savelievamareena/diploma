@@ -4,32 +4,32 @@ import {HiOutlineCog} from "react-icons/hi";
 
 export const SidebarDataAdmin = [
     {
-        title: "Dashboard",
+        title: "Записи на прием",
         icon: <AiOutlineFileText/>,
         link: "/admin"
     },
     {
-        title: "Doctors",
+        title: "Специалисты",
         icon: <AiOutlineCrown/>,
         link: "/admin/doctors"
     },
     {
-        title: "Schedule",
+        title: "Расписание",
         icon: <AiOutlineBook/>,
         link: "/admin/schedule"
     },
     {
-        title: "Callback Requests",
+        title: "Запросы обратного звонка",
         icon: <AiOutlineCustomerService/>,
         link: "/admin/callback"
     },
     {
-        title: "Reviews",
+        title: "Отзывы",
         icon: <AiOutlineCopy/>,
         link: "/admin/reviews"
     },
     {
-        title: "My Profile",
+        title: "Мои данные",
         icon: <HiOutlineCog/>,
         link: "/admin/profile"
     }

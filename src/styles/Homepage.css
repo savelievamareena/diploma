@@ -81,7 +81,7 @@ h1 {
 
 .add-review-button {
     margin-top: auto;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .reviews--leftArrow {
@@ -116,10 +116,6 @@ h1 {
     background-color: #ACB0D3;
 }
 
-.footer--wrapper {
-    height: 200px;
-}
-
 .doctors--cards {
     display: flex;
     flex-direction: row;
@@ -141,6 +137,7 @@ h1 {
 
 .doctors--buttonWrapper {
     text-align: center;
+    padding-top: 10px;
 }
 
 .offers--cards-container {
@@ -214,8 +211,10 @@ h1 {
 }
 
 .footer--wrapper {
-    height: 200px;
     background-color: #DBE8EE;
+    height: 30px;
+    text-align: center;
+    padding: 20px;
 }
 
 .callback-button{

@@ -5,7 +5,7 @@ export default function Map() {
         <div className="map--container homepage--block">
             <div className="map--wrapper">
                 <div className="map--text-wrapper">
-                    <h1>Клиника Хорошая</h1>
+                    <h1>Клиника Здоровье</h1>
                     <div className="map--text-line-wrapper">
                         <div className="map--text-line-title">Адрес</div>
                         <div className="map--text-line-right-column">
@@ -16,16 +16,16 @@ export default function Map() {
                     <div className="map--text-line-wrapper">
                         <div className="map--text-line-title">Телефон</div>
                         <div className="map--text-line-right-column">
-                            <div>+375 29 103 47 47</div>
-                            <div>+375 17 322-39-40</div>
-                            <div>(8044)7767028 - директор</div>
+                            <div>+375 29 101 01 01</div>
+                            <div>+375 17 303-03-03</div>
+                            <div>(8044)7070707 - директор</div>
                         </div>
                     </div>
                     <div className="map--text-line-wrapper">
                         <div className="map--text-line-title">Email</div>
                         <div className="map--text-line-right-column">
-                            <div>minsk@verba.by</div>
-                            <div>director@verba.by</div>
+                            <div>bestclinique@gmai.com</div>
+                            <div>director@bestclinique.by</div>
                         </div>
                     </div>
                     <div className="map--text-line-wrapper">
