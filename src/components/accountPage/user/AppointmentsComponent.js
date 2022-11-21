@@ -9,6 +9,7 @@ export default function AppointmentsComponent(props) {
     const [cookies] = useCookies();
     const [selectedSchedule, setSelectedSchedule] = React.useState(props.schedules[0]);
     const [appointmentsPerDay, setAppointmentsPerDay] = React.useState([]);
+    const appointmentDuration = 20;
 
     const [slots, setSlots] = React.useState([]);
     const [formData, setFormData] = React.useState({
@@ -35,25 +36,25 @@ export default function AppointmentsComponent(props) {
     React.useEffect(() => {
         let start = new Date(selectedSchedule.startTime);
         const end = new Date(selectedSchedule.endTime);
-        const lastSlotBeginning = moment(end).subtract(20, 'minutes');
-        const lastAsTimestamp = moment(lastSlotBeginning).format("X");
+        const lastAppointmentBeginning = moment(end).subtract(appointmentDuration, 'minutes');
+        const lastAppointmentAsTimestamp = moment(lastAppointmentBeginning).format("X");
 
         arrayOfSlotsToFilter.push(moment(start).format("HH:mm"))
-        do {
-            start = moment(start).add(20, 'minutes');
+        while (moment(start).format("X") < lastAppointmentAsTimestamp) {
+            start = moment(start).add(appointmentDuration, 'minutes');
             arrayOfSlotsToFilter.push(moment(start).format("HH:mm"));
-        } while (moment(start).format("X") < lastAsTimestamp )
+        }
 
         //select free slots to show
         const slotsToShow = arrayOfSlotsToFilter.filter(function(x) {
-            let flag = false;
+            let sotIsTaken = false;
             for (let i = 0; i < appointmentsPerDay.length; i++) {
                 if(x === appointmentsPerDay[i].beginning) {
-                    flag = true;
+                    sotIsTaken = true;
                     break;
                 }
             }
-            return !flag;
+            return !sotIsTaken;
         })
         setSlots([...slotsToShow])
 
@@ -70,7 +71,7 @@ export default function AppointmentsComponent(props) {
     }
 
     async function handleSubmit() {
-        if(formData.beginning == "") {
+        if(formData.beginning === "") {
             alert("Выберите временной слот");
         }else {
             const res = await fetch("http://localhost:8080/api/appointments", {
