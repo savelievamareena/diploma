@@ -47,14 +47,14 @@ export default function AppointmentsComponent(props) {
 
         //select free slots to show
         const slotsToShow = arrayOfSlotsToFilter.filter(function(x) {
-            let sotIsTaken = false;
+            let slotIsTaken = false;
             for (let i = 0; i < appointmentsPerDay.length; i++) {
                 if(x === appointmentsPerDay[i].beginning) {
-                    sotIsTaken = true;
+                    slotIsTaken = true;
                     break;
                 }
             }
-            return !sotIsTaken;
+            return !slotIsTaken;
         })
         setSlots([...slotsToShow])
 
