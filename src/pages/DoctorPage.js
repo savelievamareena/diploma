@@ -64,7 +64,10 @@ export default function DoctorPage() {
                     </div>
                 </div>}
                 <div className="doctor-page-reviews">
-                    {reviewBlock}
+                    {reviews.length > 0 ?
+                        <div>{reviewBlock}</div> :
+                        <div>У данного врача пока нет отзывов</div>
+                    }
                 </div>
             </div>
         </div>
