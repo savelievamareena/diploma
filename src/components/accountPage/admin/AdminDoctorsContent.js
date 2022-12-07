@@ -67,12 +67,12 @@ export default function AdminDoctorsContent() {
         });
         const resJson = await res.json();
         if (res.status !== 200) {
-            setErrorMessage("Error");
+            setErrorMessage("Ошибка");
         } else {
             if(resJson.message) {
                 setErrorMessage(resJson.message);
             }else {
-                setSuccessMessage("Done!")
+                setSuccessMessage("Готово!")
             }
         }
         setTimeout(() => {
@@ -163,10 +163,10 @@ export default function AdminDoctorsContent() {
         });
         const resJson = await res.json();
         if (res.status !== 200) {
-            setErrorMessage("Error");
+            setErrorMessage("Ошибка");
         } else {
             if(!resJson.message) {
-                setSuccessMessage("Done!")
+                setSuccessMessage("Готово!")
                 setPopupShown(false)
             }else {
                 setErrorMessage(resJson.message);

@@ -13,7 +13,6 @@ export default function ScheduleRow(props) {
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     const date = new Date(props.date).toLocaleDateString('ru-RU', options);
 
-
     return(
         <tr>
             <td><img src={photoUrl} alt=""/></td>

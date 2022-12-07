@@ -1,11 +1,8 @@
 import React from "react";
 import '../../styles/Homepage.css';
 import DoctorCard from "./DoctorCard";
-import {useNavigate} from "react-router";
 
 export default function Doctors(props) {
-    const navigate = useNavigate();
-
     const [doctors, setDoctors] = React.useState([])
 
     React.useEffect(() => {

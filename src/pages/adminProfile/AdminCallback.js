@@ -41,7 +41,7 @@ export default function AdminCallback() {
         });
         const resJson = await res.json();
         if (res.status !== 200) {
-            setErrorMessage("Error");
+            setErrorMessage("Ошибка");
         } else {
             if(resJson.message) {
                 setErrorMessage(resJson.message);

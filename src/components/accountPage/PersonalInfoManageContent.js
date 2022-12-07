@@ -82,12 +82,12 @@ export default function PersonalInfoManageContent() {
         });
         const resJson = await res.json();
         if (res.status !== 200) {
-            setMessage("Error");
+            setMessage("Ошибка");
         } else {
             if(resJson.message) {
                 setMessage(resJson.message);
             }else {
-                setMessage("Saved!");
+                setMessage("Готово!");
             }
         }
     }

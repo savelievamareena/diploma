@@ -9,7 +9,7 @@ import PersonalInfoManageContent from "../../components/accountPage/PersonalInfo
 
 export default function Account(props) {
     const navigate = useNavigate();
-    const [cookies, setCookie, removeCookie] = useCookies();
+    const [cookies] = useCookies();
 
     React.useEffect(() => {
         if (!cookies.authKey && cookies.role !== "user") {

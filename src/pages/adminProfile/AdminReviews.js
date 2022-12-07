@@ -38,7 +38,7 @@ export default function AdminReviews() {
         });
         const resJson = await res.json();
         if (res.status !== 200) {
-            setErrorMessage("Попробуйте еще раз.");
+            setErrorMessage("Ошибка");
         } else {
             if(resJson.message) {
                 setErrorMessage(resJson.message);

@@ -55,7 +55,7 @@ export default function AdminRegistration() {
         });
         const resJson = await res.json();
         if (res.status !== 200) {
-            setErrorMessage("Error");
+            setErrorMessage("Ошибка");
         } else {
             if(!resJson.message) {
                 navigate('/admin');
@@ -74,22 +74,22 @@ export default function AdminRegistration() {
             <form className="form" onSubmit={handleSubmit}>
                 <div className="form-body">
                     <div className="firstName form--row">
-                        <label className="form__label" htmlFor="firstName">First Name</label>
+                        <label className="form__label" htmlFor="firstName">Имя</label>
                         <input className="form__input"
                                name="firstName"
                                type="text"
-                               placeholder="First Name"
+                               placeholder="Имя"
                                value={formData.firstName}
                                required
                                onChange={handleChange}
                         />
                     </div>
                     <div className="lastname form--row">
-                        <label className="form__label" htmlFor="lastName">Last Name</label>
+                        <label className="form__label" htmlFor="lastName">Фамилия</label>
                         <input className="form__input"
                                name="lastName"
                                type="text"
-                               placeholder="Last Name"
+                               placeholder="Фамилия"
                                value={formData.lastName}
                                required
                                onChange={handleChange}
@@ -107,44 +107,44 @@ export default function AdminRegistration() {
                         />
                     </div>
                     <div className="phoneNumber form--row">
-                        <label className="form__label" htmlFor="phoneNumber">Phone Number</label>
+                        <label className="form__label" htmlFor="phoneNumber">Номер телефона</label>
                         <input className="form__input"
                                name="phoneNumber"
                                type="text"
-                               placeholder="Phone Number"
+                               placeholder="Номер телефона"
                                value={formData.phoneNumber}
                                required
                                onChange={handleChange}
                         />
                     </div>
                     <div className="email form--row">
-                        <label className="form__label" htmlFor="email">Email</label>
+                        <label className="form__label" htmlFor="email">Электронная почта</label>
                         <input className="form__input"
                                name="email"
                                type="email"
-                               placeholder="Email"
+                               placeholder="Электронная почта"
                                value={formData.email}
                                required
                                onChange={handleChange}
                         />
                     </div>
                     <div className="password form--row">
-                        <label className="form__label" htmlFor="password">Password</label>
+                        <label className="form__label" htmlFor="password">Пароль</label>
                         <input className="form__input"
                                name="password"
                                type="password"
-                               placeholder="Password"
+                               placeholder="Пароль"
                                value={formData.password}
                                required
                                onChange={handleChange}
                         />
                     </div>
                     <div className="confirm-password form--row">
-                        <label className="form__label" htmlFor="confirmPassword">Confirm Password </label>
+                        <label className="form__label" htmlFor="confirmPassword">Повторить пароль</label>
                         <input className="form__input"
                                name="confirmPassword"
                                type="password"
-                               placeholder="Confirm Password"
+                               placeholder="Повторить пароль"
                                value={formData.confirmPassword}
                                required
                                onChange={handleChange}
@@ -153,7 +153,7 @@ export default function AdminRegistration() {
                 </div>
                 <div className="message">{errorMessage && <span>{errorMessage}</span>}</div>
                 <div className="form-footer centered-link-wrapper">
-                    <button type="submit" className="register-btn">Register</button>
+                    <button type="submit" className="register-btn">Зарегистрироваться</button>
                 </div>
             </form>
         </div>

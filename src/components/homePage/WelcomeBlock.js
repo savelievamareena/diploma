@@ -43,10 +43,10 @@ export default function WelcomeBlock() {
         });
         const resJson = await res.json();
         if (res.status !== 200) {
-            setErrorMessage("Error");
+            setErrorMessage("Ошибка");
         } else {
             if(!resJson.message) {
-                setSuccessMessage("Done!")
+                setSuccessMessage("Готово!")
                 setTimeout(() => {
                     setIsCallbackFormShown(false)
                 }, 500);

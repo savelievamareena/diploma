@@ -75,7 +75,6 @@ export default function Admin() {
                 id: id
             }
         })
-
         setPopupShown(true);
     }
 
@@ -95,7 +94,6 @@ export default function Admin() {
 
     async function submitReportSave(event) {
         event.preventDefault();
-        console.log("test")
 
         const res = await fetch("http://localhost:8080/api/report/" + formData.id, {
             method: "POST",
@@ -105,10 +103,10 @@ export default function Admin() {
         });
         const resJson = await res.json();
         if (res.status !== 200) {
-            setErrorMessage("Error");
+            setErrorMessage("Ошибка");
         } else {
             if(!resJson.message) {
-                setSuccessMessage("Done!")
+                setSuccessMessage("Готово!")
                 setTimeout(() => {
                     setPopupShown(false)
                 }, 500);

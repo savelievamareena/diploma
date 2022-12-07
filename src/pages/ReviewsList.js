@@ -4,7 +4,6 @@ import ReviewRow from "../components/ReviewRow";
 
 export default function ReviewsList() {
     const [reviews, setReviews] = React.useState([]);
-    console.log(reviews)
 
     React.useEffect(() => {
         const fetchData = async () => {

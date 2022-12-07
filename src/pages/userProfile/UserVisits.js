@@ -23,7 +23,6 @@ export default function UserVisits() {
             return result.json();
         }
         fetchData().then(data => {
-            console.log(data);
             setAppointmentsPast([...data])
         });
     }, [successMessage])
@@ -34,7 +33,6 @@ export default function UserVisits() {
             return result.json();
         }
         fetchData().then(data => {
-            console.log(data);
             setAppointmentsActive([...data])
         });
     }, [successMessage])
